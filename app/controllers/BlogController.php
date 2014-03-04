@@ -53,10 +53,10 @@ class BlogController extends BaseController {
 		// Get this blog post data
 		$post = $this->post->where('slug', '=', $slug)->first();
 
+			// If we ended up in her
 		// Check if the blog post exists
 		if (is_null($post))
 		{
-			// If we ended up in here, it means that
 			// a page or a blog post didn't exist.
 			// So, this means that it is time for
 			// 404 error page.

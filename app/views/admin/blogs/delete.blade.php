@@ -13,7 +13,7 @@
         
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-        <input type="hidden" name="id" value="{{ $post->id }}" />
+        <input type="hidden" name="id" value="{{ $id }}" />
         <!-- <input type="hidden" name="_method" value="DELETE" /> -->
         <!-- ./ csrf token -->
 
