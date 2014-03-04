@@ -75,7 +75,7 @@ angular.module('myApp.controllers', []).
     };
 
   }])
-  .controller('OrderCtrl', ['$scope','$http','orderService',function($scope,$http,orderService) {
+  .controller('OrderCtrl', ['$scope','$http','$location','orderService',function($scope,$http,$location,orderService) {
       $scope.order = orderService.order;
       $scope.ifOrderEmpty = 'none';
       
@@ -99,7 +99,7 @@ angular.module('myApp.controllers', []).
 
       $scope.pushOrder = function(){
           $http.post('getmsg',$scope.order).success(function(data,status,headers,config){
-              console.log(data);
+              $location.path('/orderSuccess');
           }).error()
       }
   }])
