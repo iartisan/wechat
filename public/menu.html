@@ -1,0 +1,129 @@
+<style>
+    
+    .container {
+    	background-color: #FFF;
+    }
+
+#sidebar{
+    position:absolute;
+    left:0;bottom:0;top:0;
+    width:25%;
+    z-index:1;
+    overflow:hidden;
+}
+#wrapper {
+	position:absolute; z-index:1;
+    left:25%;bottom:0;top:0;
+	width:75%;
+	overflow:auto;
+}
+
+#scroller, .scroller {
+	position:relative;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+	width:100%;
+	padding:0;
+}
+
+#scroller ul, .scroller ul {
+	position:relative;
+	list-style:none;
+	padding:0;
+	margin:0;
+	width:100%;
+}
+
+#scroller li, .scroller li {
+	padding:0;
+    margin: 0 0 25px 0;
+}
+
+#thelist .ui.connected.items > .item{
+    width: 50%;
+}
+
+#thelist .ui.items .item>.content>.name {
+display: block;
+font-size: 13px;
+font-weight: 700;
+margin-bottom: 0;
+color: rgba(0,0,0,.7);
+text-align:center;
+}
+
+#order-info
+{
+position: absolute;
+z-index: 2;
+bottom: 58px;
+left: 0;
+width: 100%;
+height: 48px;
+background-color: yellow;
+}
+
+</style>
+
+<div id="sidebar" ng-iscroll="sidebarScroll" ng-iscroll-delay="50">
+    <div class="scroller">
+            <ul id="categories" class="ui small fluid vertical menu">
+                <li>
+                    <a href="#/test" class="active item" >
+                        我的菜
+                    </a>
+                </li>
+                <li>
+                    <a class="item">
+                        <div class="ui red circular label">
+                            10
+                        </div>
+                    新品
+                    </a>
+                </li>
+            </ul>
+    </div>
+</div>
+ <div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+	<div id="scroller">
+		<ul id="thelist">
+            <li ng-repeat="dish in dishes">
+                <div class="ui  connected items">
+                    <div class="item">
+                        <div class="image">
+                            <img src="http://placehold.it/200x200" alt="">
+                            <a class="heart ui corner label">
+                                <i class="heart icon"></i>
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="name">
+            <a href="#/dish/{{dish.id}}">
+                                {{dish.name}}
+            </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="content">
+                            <p class="descriptiion">
+                            <button ng-click="addDish(dish)" ng-init="count=0">+</button>
+                            {{dish.count}}
+                            <button ng-click="subDish(dish)" >-</button>
+                            </p>
+                            <p>
+                            {{dish.snippet}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+		</ul>
+	</div>
+</div>
+<div id="order-info" style="display:{{ifDisplay}}" >
+    <a href="#/order">测试</a>
+    {{fuck}}
+
+</div>
+
+

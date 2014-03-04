@@ -1,0 +1,59 @@
+<style>
+
+    ul#order{
+        list-style:none;
+    }
+    .order-row{
+        width: 100%;
+        display:block;
+    }
+    .clearfix:after{
+        clear:both;
+    }
+    .order-column{
+        float:left;
+        text-align:center;
+    }
+
+    .order-num{
+        width: 10%;
+        height: 22px;
+    }
+    .order-element{
+        width: 30%;
+    }
+</style>
+<div id="orderWrapper" ng-iscroll="orderWrapper" ng-iscroll-delay='50'>
+    <div id="scroller">
+        <div id="ifOrderEmpty" style="display:{{ifOrderEmpty}}">
+            <a href="#/menu">请前往菜单页点菜</a>
+        </div>
+        <ul id="order">
+            <li>
+                <div class="order-row clearfix">
+                    <div class="order-column order-num"></div>
+                    <div class="order-column order-element">菜品名称</div>
+                    <div class="order-column order-element">折后价</div>
+                    <div class="order-column order-element">数量</div>
+                </div>
+            </li>
+            <li ng-repeat="oIa in order track by $index">
+                <div class="order-row">
+                    <div class="order-column order-num">1</div>
+                    <div class="order-column order-element">{{oIa.name}}</div>
+                    <div class="order-column order-element">{{oIa.price}}</div>
+                    <div class="order-column order-element">
+                            <button ng-click="addDish(oIa)" ng-init="count=0">+</button>
+                            {{oIa.count}}
+                            <button ng-click="subDish(oIa)" >-</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="totalOrder">统计总价</div>
+<div id="totalOrder">
+    <a href="">提交</a>
+    <a href="#/menu">继续选择</a>
+</div>

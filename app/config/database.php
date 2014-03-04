@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'laravelbootstrapstarter',
-			'username'  => 'user',
-			'password'  => 'password',
+			'host'      => '127.0.0.1',
+			'database'  => 'wechat',
+			'username'  => 'root',
+			'password'  => 'goodluck',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

@@ -32,7 +32,9 @@
         "barryvdh/laravel-ide-helper": "dev-master",
         "leafo/lessphp": "v0.4.0",
         "natxet/CssMin": "dev-master",
-        "lmammino/jsmin4assetic": "1.0.*"
+        "lmammino/jsmin4assetic": "1.0.*",
+	"intervention/image": "dev-master",
+	"intervention/imagecache": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

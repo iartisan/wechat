@@ -4,13 +4,12 @@
 @section('content')
 	<!-- Tabs -->
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#tab-general" data-toggle="tab">General</a></li>
-			<li><a href="#tab-meta-data" data-toggle="tab">Meta data</a></li>
+			<li class="active"><a href="#tab-general" data-toggle="tab">详情</a></li>
 		</ul>
 	<!-- ./ tabs -->
 
 	{{-- Edit Blog Form --}}
-	<form class="form-horizontal" method="post" action="@if (isset($post)){{ URL::to('admin/blogs/' . $post->id . '/edit') }}@endif" autocomplete="off">
+	<form class="form-horizontal" method="post" action="@if (isset($foods)){{ URL::to('admin/blogs/' . $foods->id . '/edit') }}@endif" enctype="multipart/form-data" >
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 		<!-- ./ csrf token -->
@@ -22,19 +21,55 @@
 				<!-- Post Title -->
 				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                     <div class="col-md-12">
-                        <label class="control-label" for="title">Post Title</label>
-						<input class="form-control" type="text" name="title" id="title" value="{{{ Input::old('title', isset($post) ? $post->title : null) }}}" />
-						{{{ $errors->first('title', '<span class="help-inline">:message</span>') }}}
+                        <label class="control-label" for="title">名称</label>
+						<input class="form-control" type="text" name="food_name" id="title" value="{{{ isset($foods) ? $foods->name:null }}}" />
 					</div>
 				</div>
-				<!-- ./ post title -->
-
-				<!-- Content -->
+				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
+					<div class="col-md-12">
+	                    <label class="control-label" for="content">图片上传</label>
+					    <input class="form-control" type="file"  name="photo" id="photo" value="{{{ Input::old('pic1_url', isset($foods) ? $foods->pic : null ) }}}" />
+					</div>
+				</div>
 				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
 					<div class="col-md-12">
-                        <label class="control-label" for="content">Content</label>
-						<textarea class="form-control full-width wysihtml5" name="content" value="content" rows="10">{{{ Input::old('content', isset($post) ? $post->content : null) }}}</textarea>
-						{{{ $errors->first('content', '<span class="help-inline">:message</span>') }}}
+						<label class="control-label" for="title">类型</label>
+                        <select class="form-control" name="type">
+                          @foreach($styles as $s)
+                          <option value="{{{$s->name}}}" @if (isset($foods) && $foods->type==$s->name) selected='selected' @endif>{{{$s->name}}}</option>
+						  @endforeach
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+					<div class="col-md-12">
+                        <label class="control-label" for="content">价格</label>
+						<input class="form-control" type="text" name="price" id="title" value="{{{ isset($foods) ? $foods->price : null }}}" />
+					</div>
+				</div>
+
+				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+					<div class="col-md-12">
+						 <label class="control-label" for="title">状态</label>
+                        <select class="form-control" name="status">
+						  <option>上架</option>
+						  <option>下架</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+					<div class="col-md-12">
+						<label class="control-label" for="title">标签</label>
+                        <input class="form-control" type="text" name="tag" id="title" value="{{{ isset($foods) ? $foods->tag :null}}}" />
+					</div>
+				</div>
+
+				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+					<div class="col-md-12">
+						<label class="control-label" for="title">所需时间</label>
+                        <input class="form-control" type="text" name="times" id="title" value="{{{ isset($foods) ? $foods->times :null}}}" />
 					</div>
 				</div>
 				<!-- ./ content -->
@@ -42,37 +77,6 @@
 			<!-- ./ general tab -->
 
 			<!-- Meta Data tab -->
-			<div class="tab-pane" id="tab-meta-data">
-				<!-- Meta Title -->
-				<div class="form-group {{{ $errors->has('meta-title') ? 'error' : '' }}}">
-					<div class="col-md-12">
-                        <label class="control-label" for="meta-title">Meta Title</label>
-						<input class="form-control" type="text" name="meta-title" id="meta-title" value="{{{ Input::old('meta-title', isset($post) ? $post->meta_title : null) }}}" />
-						{{{ $errors->first('meta-title', '<span class="help-inline">:message</span>') }}}
-					</div>
-				</div>
-				<!-- ./ meta title -->
-
-				<!-- Meta Description -->
-				<div class="form-group {{{ $errors->has('meta-description') ? 'error' : '' }}}">
-					<div class="col-md-12 controls">
-                        <label class="control-label" for="meta-description">Meta Description</label>
-						<input class="form-control" type="text" name="meta-description" id="meta-description" value="{{{ Input::old('meta-description', isset($post) ? $post->meta_description : null) }}}" />
-						{{{ $errors->first('meta-description', '<span class="help-inline">:message</span>') }}}
-					</div>
-				</div>
-				<!-- ./ meta description -->
-
-				<!-- Meta Keywords -->
-				<div class="form-group {{{ $errors->has('meta-keywords') ? 'error' : '' }}}">
-					<div class="col-md-12">
-                        <label class="control-label" for="meta-keywords">Meta Keywords</label>
-						<input class="form-control" type="text" name="meta-keywords" id="meta-keywords" value="{{{ Input::old('meta-keywords', isset($post) ? $post->meta_keywords : null) }}}" />
-						{{{ $errors->first('meta-keywords', '<span class="help-inline">:message</span>') }}}
-					</div>
-				</div>
-				<!-- ./ meta keywords -->
-			</div>
 			<!-- ./ meta data tab -->
 		</div>
 		<!-- ./ tabs content -->
@@ -80,9 +84,9 @@
 		<!-- Form Actions -->
 		<div class="form-group">
 			<div class="col-md-12">
-				<element class="btn-cancel close_popup">Cancel</element>
-				<button type="reset" class="btn btn-default">Reset</button>
-				<button type="submit" class="btn btn-success">Update</button>
+				<element class="btn-cancel close_popup">取消</element>
+				<button type="reset" class="btn btn-default">重置</button>
+				<button type="submit" class="btn btn-success">更新</button>
 			</div>
 		</div>
 		<!-- ./ form actions -->

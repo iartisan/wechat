@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    
+    <title>微信点餐系统</title>
+      <link rel="stylesheet" href="style.css" media="all">
+      <script>
+      </script>
+</head>
+<body ng-controller="bodyCtrl">
+    <div class="container view-animate" ng-view>
+            <div class="logo-container">
+                        <div id="welcome-logo">
+                            <h1>
+                                微信点餐系统
+                                <span>------微格无线</span>
+                            </h1>
+                        </div>
+                        <div id="slow-transfer">您好，我们正在努力为你加载...</div>
+            </div>
+    </div>
+    <div id="footer-container" ng-include="'footer.html'" ng-controller="footerCtrl">
+
+    </div>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="minified/collections/menu.min.css" media="all">
+    <link rel="stylesheet" href="minified/elements/label.min.css" media="all">
+    <link rel="stylesheet" href="minified/elements/icon.min.css" media="all">
+    <link rel="stylesheet" href="minified/views/item.min.css" media="all">
+</body>
+</html>

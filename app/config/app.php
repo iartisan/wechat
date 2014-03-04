@@ -123,7 +123,8 @@ return array(
         'Bllim\Datatables\DatatablesServiceProvider', // Datatables
 
         /* Uncomment for use in development */
-//        'Way\Generators\GeneratorsServiceProvider', // Generators
+        'Way\Generators\GeneratorsServiceProvider', // Generators
+        'Intervention\Image\ImageServiceProvider',
 //        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', // IDE Helpers
 
     ),
@@ -154,6 +155,7 @@ return array(
 
     'aliases' => array(
         /* Laravel Base Aliases */
+        'Image' => 'Intervention\Image\Facades\Image',
 		'App'             => 'Illuminate\Support\Facades\App',
 		'Artisan'         => 'Illuminate\Support\Facades\Artisan',
 		'Auth'            => 'Illuminate\Support\Facades\Auth',

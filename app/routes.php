@@ -19,6 +19,7 @@ Route::model('user', 'User');
 Route::model('comment', 'Comment');
 Route::model('post', 'Post');
 Route::model('role', 'Role');
+Route::model('style', 'Style');
 
 /** ------------------------------------------
  *  Route constraint patterns
@@ -28,6 +29,7 @@ Route::pattern('comment', '[0-9]+');
 Route::pattern('post', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
+Route::pattern('store', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 
 /** ------------------------------------------
@@ -44,12 +46,21 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('comments/{comment}/delete', 'AdminCommentsController@postDelete');
     Route::controller('comments', 'AdminCommentsController');
 
+    #store Management
+    Route::controller('stores', 'AdminStoresController');
+    
+    #steyls Management
+    Route::controller('styles', 'AdminStylesController');
+    Route::get('styles/{id}/edit', 'AdminStylesController@getEdit');
+    Route::post('styles/{id}/edit', 'AdminStylesController@postEdit');
+    Route::controller('styles', 'AdminStylesController');
+
     # Blog Management
     Route::get('blogs/{post}/show', 'AdminBlogsController@getShow');
-    Route::get('blogs/{post}/edit', 'AdminBlogsController@getEdit');
-    Route::post('blogs/{post}/edit', 'AdminBlogsController@postEdit');
-    Route::get('blogs/{post}/delete', 'AdminBlogsController@getDelete');
-    Route::post('blogs/{post}/delete', 'AdminBlogsController@postDelete');
+    Route::get('blogs/{id}/edit', 'AdminBlogsController@getEdit');
+    Route::post('blogs/{id}/edit', 'AdminBlogsController@postEdit');
+    Route::get('blogs/{id}/delete', 'AdminBlogsController@getDelete');
+    Route::post('blogs/{id}/delete', 'AdminBlogsController@postDelete');
     Route::controller('blogs', 'AdminBlogsController');
 
     # User Management
@@ -68,6 +79,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::post('roles/{role}/delete', 'AdminRolesController@postDelete');
     Route::controller('roles', 'AdminRolesController');
 
+    # Orders Role Management
+    Route::controller('orders', 'AdminOrdersController');
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });
@@ -91,6 +104,7 @@ Route::post('user/login', 'UserController@postLogin');
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
 
+Route::controller('sendmsg', 'SendmsgController');
 //:: Application Routes ::
 
 # Filter for detect language
@@ -107,5 +121,8 @@ Route::get('contact-us', function()
 Route::get('{postSlug}', 'BlogController@getView');
 Route::post('{postSlug}', 'BlogController@postView');
 
+
 # Index Page - Last route, no matches
 Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
+
+//Route::resource('tweets', 'TweetsController');

@@ -11,6 +11,7 @@ class Post extends Eloquent implements PresentableInterface {
 	 *
 	 * @return bool
 	 */
+	protected $table = 'posts';
 	public function delete()
 	{
 		// Delete the comments
