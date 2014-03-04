@@ -106,7 +106,7 @@ Route::controller('user', 'UserController');
 
 #获取发送数据
 Route::controller('sendmsg', 'SendmsgController');
-Route::controller('getmsg', 'GetmsgController');
+Route::post('getmsg', 'GetmsgController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::

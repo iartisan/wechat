@@ -94,10 +94,10 @@ Entrust::routeNeedsPermission( 'admin/stores*', 'manage_roles', Redirect::to('/a
 
 Route::filter('csrf', function()
 {
-	if (Session::getToken() != Input::get('csrf_token') &&  Session::getToken() != Input::get('_token'))
-	{
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+	//if (Session::getToken() != Input::get('csrf_token') &&  Session::getToken() != Input::get('_token'))
+	//{
+		//throw new Illuminate\Session\TokenMismatchException;
+	//}
 });
 
 /*

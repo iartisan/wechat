@@ -96,6 +96,12 @@ angular.module('myApp.controllers', []).
           }
           console.log($scope.ifOrderEmpty);
       }
+
+      $scope.pushOrder = function(){
+          $http.post('getmsg',$scope.order).success(function(data,status,headers,config){
+              console.log(data);
+          }).error()
+      }
   }])
   .controller('DishCtrl', ['$scope','$routeParams','orderService',function($scope,$routeParams,$orderService) {
       $scope.dish_id = $routeParams.dishId;
