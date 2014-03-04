@@ -104,7 +104,11 @@ Route::post('user/login', 'UserController@postLogin');
 # User RESTful Routes (Login, Logout, Register, etc)
 Route::controller('user', 'UserController');
 
+#获取发送数据
 Route::controller('sendmsg', 'SendmsgController');
+Route::controller('getmsg', 'GetmsgController');
+Route::controller('sendtype', 'SendtypeController');
+
 //:: Application Routes ::
 
 # Filter for detect language

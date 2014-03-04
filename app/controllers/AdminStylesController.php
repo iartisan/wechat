@@ -40,16 +40,14 @@ class AdminStylesController extends AdminController {
     public function getData()
     {
         //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        $posts = Styles::select(array('styles.id', 'styles.name'));
+        $posts = Styles::select(array('styles.id', 'styles.name','styles.status'));
         return Datatables::of($posts)
-
         //->edit_column('comments', '{{ DB::table(\'comments\')->where(\'post_id\', \'=\', $id)->count() }}')
         ->edit_column('styles', '{{ DB::table(\'styles\')->where(\'id\', \'=\', $id)->count() }}')
+        ->edit_column('status', '<input class="btn btn-default" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default" type="button" value="下移">')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/styles/edit/\' . $id  ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
                 <a href="{{{ URL::to(\'admin/styles/delete/\' . $id) }}}" class="btn btn-xs btn-danger iframe">删除</a>
             ')
-
-
         ->remove_column('id')
         ->make();
     }
@@ -107,11 +105,11 @@ class AdminStylesController extends AdminController {
         $user = Auth::user();
         // Update the blog post data
         $this->styles->name   = Input::get('type_name');
-
         $this->styles->status  ='1';
             // Was the blog post created?
         if($this->styles->save())
        {
+            $update = Styles::where('id', '=', $this->styles->id)->update(array('status' => $this->styles->id));
             // Redirect to the new blog post page
              return Redirect::to('admin/styles/edit/' . $this->styles->id )->with('success', Lang::get('更新成功'));
         }

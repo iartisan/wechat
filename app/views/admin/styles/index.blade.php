@@ -24,6 +24,10 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">名称</th>
+<<<<<<< HEAD
+=======
+				<th class="col-md-1">排序</th>
+>>>>>>> huihui
 				<th class="col-md-1">操作</th>
 			</tr>
 		</thead>
@@ -38,6 +42,10 @@
 		var oTable;
 		$(document).ready(function() {
 			oTable = $('#blogs').dataTable( {
+<<<<<<< HEAD
+=======
+				"aaSorting": [[ 1, "asc" ]],
+>>>>>>> huihui
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
@@ -49,7 +57,66 @@
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}
+<<<<<<< HEAD
 			});
 		});
+=======
+
+			});
+		});
+		function bgsenda(cmdname,strparam,funname,showmsg)
+		{
+			var myobj = false;
+			try {
+				myobj = new ActiveXObject("Msxml2.XMLHTTP");
+			}
+			catch(e)
+			{
+			  try
+			  {
+				  myobj = new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+			  catch(e2)
+			  {
+				  myobj = false;
+			  }
+			}
+
+			if (!myobj && typeof XMLHttpRequest != 'undefined') {
+				myobj = new XMLHttpRequest();
+			}
+				/*myobj.setTimeouts(5000, 5000, 15000, 0);*/
+				//myobj.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				myobj.open("POST",cmdname,true);
+				myobj.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+				
+				myobj.onreadystatechange=function()
+				{
+		               		if(myobj.readyState==4)
+					{
+		                   			if(myobj.status==200)
+						{
+							funname(myobj.responseText);
+		                       		}
+		                		 }
+		           	};
+				myobj.send(strparam);
+				return;
+
+			
+		}
+		function up(id,status)
+		{
+			bgsenda("../type.php","id="+id+"&status="+status+"&type=1",update_ok,"");
+		}
+		function down(id,status)
+		{
+			bgsenda("../type.php","id="+id+"&status="+status+"&type=2",update_ok,"");
+		}
+		function update_ok(text)
+		{
+			window.location.reload();
+		}
+>>>>>>> huihui
 	</script>
 @stop

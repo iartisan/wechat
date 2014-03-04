@@ -13,6 +13,7 @@
 	mysql_connect("localhost","root","goodluck");
 	mysql_select_db('wechat');
 	$week = date("W", time());
+<<<<<<< HEAD
 	$str1="select * from orders";
 	$q=mysql_query($str1);
 	echo "编号\t省份\t用户名\t信息\t电话号码\t日期\t总积分\t转发积分\t评论积分\t排名\r\n";
@@ -25,5 +26,11 @@
 		echo $rows['remark']."\r\n";
 		//echo "";
 	}	
+=======
+	$str="select * from orders";
+	$q=mysql_query($str);
+	echo mysql_num_rows($q);
+		
+>>>>>>> huihui
  ?>
 
