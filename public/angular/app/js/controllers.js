@@ -20,14 +20,35 @@ angular.module('myApp.controllers', []).
 
 //      $scope.output = testService.label;
 
+        $http.get('sendtype').success(function(data){
+            $scope.categories = data;
+        });
       $http.get('sendmsg').success(function(data){
           for(var i =0; data[i];i++)
           data[i].count=0;
           $scope.dishes = data;
+      if($scope.order.length!=0){
+          for(var i =0; $scope.order[i]; i++){
+                for(var j =0; $scope.dishes[j]; j++){
+                    if($scope.order[i].id == $scope.dishes[j].id){
+                        $scope.dishes[j].count=$scope.order[i].count;
+                    }
+                }
+          }
+      }
       }).error(function(data,status,header,config){
           //错误处理
 
       });
+
+      //作用域真的要了解一下了
+      //console.log($scope.dishes);
+
+      $scope.order = orderService.order;
+
+
+      this.searchDish=function(order_id){
+      }
 
       $scope.addDish = function(dish){
          //$http.post('json/addDish.php',dish).success(function(data,status,headers,config){
@@ -103,9 +124,8 @@ angular.module('myApp.controllers', []).
           }).error()
       }
   }])
-  .controller('DishCtrl', ['$scope','$routeParams','orderService',function($scope,$routeParams,$orderService) {
+  .controller('DishCtrl', ['$scope','$routeParams','orderService','mymodal',function($scope,$routeParams,$orderService,mymodal) {
       $scope.dish_id = $routeParams.dishId;
-
   }])
   .controller('TestCtrl', [function() {
 
