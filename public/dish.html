@@ -1,3 +1,26 @@
 <div class="dish-info">
-    {{dish_id}}
+    <div class="image_iart">
+        <img src="http://placehold.it/250x250" alt="">
+    </div>
+    <div class="tag_iart">
+        <ul>
+            <li>红心</li>
+            <li>分享</li>
+            <li>多少人点过</li>
+        </ul>
+    </div>
+    <div class="content">
+        <a href="#descirption_tab">详情</a>
+        <a htef="#comment_tab">评论</a>
+        <div id="description_tab">
+            <h2>
+            {{dish.name}}
+            </h2>
+            <p>{{dish.description}}</p>
+            <div class="order_block">
+
+            </div>
+        </div>
+
+    </div>
 </div>

@@ -13,11 +13,13 @@ angular.module('myApp.services', []).
         //return "fuck factory"
     //}
 //}).
-.service('orderService',function(){
+.service('orderService',function($http){
     this.totalCount = 0;
     this.totalPrice = 0;
     this.ifDisplay = "none";
     this.order=[];
+
+
 
     this.addDish = function(dish){
         this.totalCount += 1;
@@ -63,6 +65,7 @@ angular.module('myApp.services', []).
         return "none";
     }
 })
+
   .service('testService',function(){
     this.label = "this is a service";
 });

@@ -13,7 +13,9 @@
 </head>
 <body ng-controller="bodyCtrl">
     <div class="container view-animate" ng-view>
-            <div class="logo-container">
+        <div id="logo-container-wrapper">
+
+           <div class="logo-container">
                         <div id="welcome-logo">
                             <h1>
                                 微信点餐系统
@@ -22,6 +24,7 @@
                         </div>
                         <div id="slow-transfer">您好，我们正在努力为你加载...</div>
             </div>
+        </div>
     </div>
     <div id="footer-container" ng-include="'footer.html'" ng-controller="footerCtrl">
 
