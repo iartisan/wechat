@@ -24,13 +24,13 @@ class SendmsgController extends BaseController {
      *
      * @return View
      */
-    public function getIndex()
+    public function getIndex($typename)
     {
         // Title
         $title = Lang::get('admin/blogs/title.blog_management');
 
         // Grab all the blog posts
-        $foods = $this->foods->get();
+        $foods = $this->foods->where('type','=',$typename)->get();
         return Response::json($foods)->setCallback(Input::get('callback'));
         // Show the page
         //return View::make('admin/stores/index', compact('posts', 'title'));
