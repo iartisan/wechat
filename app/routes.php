@@ -105,7 +105,7 @@ Route::post('user/login', 'UserController@postLogin');
 Route::controller('user', 'UserController');
 
 #获取发送数据
-Route::post('sendmsg{typename}', 'SendmsgController@getIndex');
+Route::post('sendmsg/{typename}', 'SendmsgController@getIndex');
 Route::post('getmsg', 'GetmsgController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
