@@ -29,7 +29,6 @@ Route::pattern('comment', '[0-9]+');
 Route::pattern('post', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
-Route::pattern('store', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 
 /** ------------------------------------------
@@ -48,6 +47,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     #store Management
     Route::controller('stores', 'AdminStoresController');
+    Route::get('stores/{id}/edit', 'AdminStoresController@getEdit');
+    Route::post('stores/{id}/edit', 'AdminStoresController@postEdit');
     
     #steyls Management
     Route::controller('styles', 'AdminStylesController');

@@ -27,6 +27,8 @@ class GetmsgController extends BaseController {
     public function getIndex()
     {
         $data = json_decode(file_get_contents("php://input"));
+        return $data;
+        /*
         $this->orders->name='a';
         $this->orders->phone='123456';
         $this->orders->remark='good';
@@ -50,5 +52,6 @@ class GetmsgController extends BaseController {
         $this->ordersmsgs->Insert($str);
         $affectedRows = Orders::where('id', '=', $id)->update(array('price' => $price));
         echo $price;
+        */
     }
 }
