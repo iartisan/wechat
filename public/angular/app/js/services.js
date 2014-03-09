@@ -32,6 +32,7 @@ angular.module('myApp.services', []).
             this.order.push(dish);
             return dish.count;
         }
+        this.checkDispaly;
     }
 
     this.subDish = function(dish){
@@ -59,6 +60,13 @@ angular.module('myApp.services', []).
 
     this.checkDisplay = function(){
         if(this.totalCount > 0){
+            this.totalprice = 0;
+            this.totalcount = 0;
+            for(var i =0; this.order[i]; i++){
+                this.totalprice += this.order[i].price*this.order[i].count;
+                this.totalcount += this.order[i].count;
+
+            }
             this.ifDisplay = "block";
             return "block";
         }

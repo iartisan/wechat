@@ -66,6 +66,7 @@ angular.module('myApp.controllers', []).
 
       $scope.order = orderService.order;
 
+          $scope.ifDisplay = orderService.checkDisplay();
 
       this.searchDish=function(order_id){
       }
@@ -79,6 +80,8 @@ angular.module('myApp.controllers', []).
             dish.count=orderService.addDish(dish);
           $scope.order = orderService.order;
           $scope.ifDisplay = orderService.checkDisplay();
+          $scope.totalprice = orderService.totalprice;
+          $scope.totalcount = orderService.totalcount;
           
       }
 
@@ -86,6 +89,8 @@ angular.module('myApp.controllers', []).
               dish.count=orderService.subDish(dish);
           $scope.order = orderService.order;
           $scope.ifDisplay = orderService.checkDisplay();
+          $scope.totalprice = orderService.totalprice;
+          $scope.totalcount = orderService.totalcount;
       }
 
         $scope.$parent.myScrollOptions = {
@@ -146,6 +151,14 @@ angular.module('myApp.controllers', []).
   }])
   .controller('DishCtrl', ['$scope','$routeParams','orderService','mymodal',function($scope,$routeParams,$orderService,mymodal) {
       $scope.dish_id = $routeParams.dishId;
+  }])
+  .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,$orderService,$http) {
+      $scope.update = function(user){
+          $scope.customer = angular.copy(user);
+          $http.post('addAddress',$scope.customer).success(function(data,status,headers,config){
+              //$location.path('/orderSuccess');
+          }).error()
+      }
   }])
   .controller('TestCtrl', [function() {
 
