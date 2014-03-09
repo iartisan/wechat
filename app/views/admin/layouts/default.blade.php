@@ -96,12 +96,8 @@
     					<li{{ (Request::is('admin/styles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/styles') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 分类管理</a></li>
     					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> 餐品管理</a></li>
-<<<<<<< HEAD
-    					<li{{ (Request::is('admin/comments*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/stores') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 门店管理</a></li>
-=======
     					<li{{ (Request::is('admin/stores*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/stores') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 门店管理</a></li>
->>>>>>> huihui
-    					<li{{ (Request::is('admin/orders*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/orders') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 订单管理</a></li>
+						<li{{ (Request::is('admin/orders*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/orders') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 订单管理</a></li>
     					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
     						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
     							<span class="glyphicon glyphicon-user"></span> 用户管理 <span class="caret"></span>

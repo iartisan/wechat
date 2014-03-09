@@ -24,10 +24,8 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">名称</th>
-<<<<<<< HEAD
-=======
+
 				<th class="col-md-1">排序</th>
->>>>>>> huihui
 				<th class="col-md-1">操作</th>
 			</tr>
 		</thead>
@@ -42,10 +40,7 @@
 		var oTable;
 		$(document).ready(function() {
 			oTable = $('#blogs').dataTable( {
-<<<<<<< HEAD
-=======
 				"aaSorting": [[ 1, "asc" ]],
->>>>>>> huihui
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
@@ -57,10 +52,6 @@
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}
-<<<<<<< HEAD
-			});
-		});
-=======
 
 			});
 		});
@@ -117,6 +108,5 @@
 		{
 			window.location.reload();
 		}
->>>>>>> huihui
 	</script>
 @stop

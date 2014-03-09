@@ -25,7 +25,6 @@ class SendtypeController extends BaseController {
     public function getIndex()
     {
         $styles = $this->styles->orderBy('status', 'asc')->get();
-        $styles = $this->styles->lists('name');
         return Response::json($styles)->setCallback(Input::get('callback'));
     }
 }

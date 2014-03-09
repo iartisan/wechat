@@ -1,7 +1,4 @@
 <?php
-<<<<<<< HEAD
-	phpinfo();
-=======
 	header("Content-type:application/vnd.ms-excel");
 
 	header( "Accept-Ranges: bytes ");
@@ -32,6 +29,5 @@
 		echo $rows['remark']."\r\n";
 		//echo "";
 	}	
->>>>>>> huihui
  ?>
 

@@ -67,9 +67,9 @@ background-color: yellow;
 <div id="sidebar" ng-iscroll="sidebarScroll" ng-iscroll-delay="50">
     <div class="scroller">
             <ul id="categories" class="ui small fluid vertical menu">
-                <li>
-                    <a href="#/test" class="active item" >
-                        我的菜
+                <li ng-repeat="category in categories">
+                <a href="#/menu/{{category.name}}" class="item" >
+                        {{ category.name }}
                     </a>
                 </li>
                 <li>
@@ -106,7 +106,7 @@ background-color: yellow;
                     <div class="item">
                         <div class="content">
                             <p class="descriptiion">
-                            <button ng-click="addDish(dish)" ng-init="count=0">+</button>
+                            <button ng-click="addDish(dish)">+</button>
                             {{dish.count}}
                             <button ng-click="subDish(dish)" >-</button>
                             </p>
@@ -122,7 +122,6 @@ background-color: yellow;
 </div>
 <div id="order-info" style="display:{{ifDisplay}}" >
     <a href="#/order">测试</a>
-    {{fuck}}
 
 </div>
 
