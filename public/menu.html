@@ -35,7 +35,19 @@
 
 #scroller li, .scroller li {
 	padding:0;
+    margin: 0 0 5px 0;
+}
+
+#thelist li{
+    padding: 0;
     margin: 0 0 25px 0;
+}
+
+#thelist .ui.connected.items {
+display: table;
+width: 98%;
+margin-left: 2px!important;
+margin-right: 2px!important;
 }
 
 #thelist .ui.connected.items > .item{
@@ -68,10 +80,16 @@ background-color: yellow;
     <div class="scroller">
             <ul id="categories" class="ui small fluid vertical menu">
                 <li>
-                    <a href="#/test" class="active item" >
-                        我的菜
+                <a href="#/menu/index" class="item" >
+                    全部
                     </a>
                 </li>
+                <li ng-repeat="category in categories">
+                <a href="#/menu/{{category.name}}" class="item" >
+                        {{ category.name }}
+                    </a>
+                </li>
+                <!--
                 <li>
                     <a class="item">
                         <div class="ui red circular label">
@@ -80,6 +98,7 @@ background-color: yellow;
                     新品
                     </a>
                 </li>
+                -->
             </ul>
     </div>
 </div>
@@ -90,7 +109,7 @@ background-color: yellow;
                 <div class="ui  connected items">
                     <div class="item">
                         <div class="image">
-                            <img src="http://placehold.it/200x200" alt="">
+                            <img ng-src="img/{{dish.id}}.jpg" alt="">
                             <a class="heart ui corner label">
                                 <i class="heart icon"></i>
                             </a>
@@ -105,8 +124,9 @@ background-color: yellow;
                     </div>
                     <div class="item">
                         <div class="content">
+                            <p>{{dish.price}}元 会员{{dish.rebate}}折</p>
                             <p class="descriptiion">
-                            <button ng-click="addDish(dish)" ng-init="count=0">+</button>
+                            <button ng-click="addDish(dish)">+</button>
                             {{dish.count}}
                             <button ng-click="subDish(dish)" >-</button>
                             </p>
@@ -122,7 +142,7 @@ background-color: yellow;
 </div>
 <div id="order-info" style="display:{{ifDisplay}}" >
     <a href="#/order">测试</a>
-    {{fuck}}
+    总价{{ totalprice }}总{{totalcount}}件
 
 </div>
 

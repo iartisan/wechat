@@ -29,7 +29,6 @@ Route::pattern('comment', '[0-9]+');
 Route::pattern('post', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 Route::pattern('role', '[0-9]+');
-Route::pattern('store', '[0-9]+');
 Route::pattern('token', '[0-9a-z]+');
 
 /** ------------------------------------------
@@ -47,13 +46,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('comments', 'AdminCommentsController');
 
     #store Management
+   
+    Route::get('stores/{id}/edit', 'AdminStoresController@getEdit');
+    Route::post('stores/{id}/edit', 'AdminStoresController@postEdit');
     Route::controller('stores', 'AdminStoresController');
+    
     
     #steyls Management
     Route::controller('styles', 'AdminStylesController');
     Route::get('styles/{id}/edit', 'AdminStylesController@getEdit');
     Route::post('styles/{id}/edit', 'AdminStylesController@postEdit');
-    Route::controller('styles', 'AdminStylesController');
+ 
 
     # Blog Management
     Route::get('blogs/{post}/show', 'AdminBlogsController@getShow');
@@ -105,8 +108,10 @@ Route::post('user/login', 'UserController@postLogin');
 Route::controller('user', 'UserController');
 
 #获取发送数据
-Route::controller('sendmsg', 'SendmsgController');
+Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
+//Route::get('sendmsg/index', 'SendmsgController@getFirst');
 Route::post('getmsg', 'GetmsgController@getIndex');
+Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::

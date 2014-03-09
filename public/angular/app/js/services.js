@@ -13,11 +13,13 @@ angular.module('myApp.services', []).
         //return "fuck factory"
     //}
 //}).
-.service('orderService',function(){
+.service('orderService',function($http){
     this.totalCount = 0;
     this.totalPrice = 0;
     this.ifDisplay = "none";
     this.order=[];
+
+
 
     this.addDish = function(dish){
         this.totalCount += 1;
@@ -30,6 +32,7 @@ angular.module('myApp.services', []).
             this.order.push(dish);
             return dish.count;
         }
+        this.checkDispaly;
     }
 
     this.subDish = function(dish){
@@ -57,12 +60,20 @@ angular.module('myApp.services', []).
 
     this.checkDisplay = function(){
         if(this.totalCount > 0){
+            this.totalprice = 0;
+            this.totalcount = 0;
+            for(var i =0; this.order[i]; i++){
+                this.totalprice += this.order[i].price*this.order[i].count;
+                this.totalcount += this.order[i].count;
+
+            }
             this.ifDisplay = "block";
             return "block";
         }
         return "none";
     }
 })
+
   .service('testService',function(){
     this.label = "this is a service";
 });
