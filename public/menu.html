@@ -67,25 +67,45 @@ text-align:center;
 {
 position: absolute;
 z-index: 2;
-bottom: 58px;
-left: 0;
-width: 100%;
-height: 48px;
-background-color: yellow;
+bottom: 48px;
+left: 25%;
+width: 50%;
+height: 32px;
+background-color: #DDD9C3;
+text-align:center;
+border:3px solid #92D050;
+border-radius: 5px;
 }
 
+#order-info a{
+    line-height: 32px;
+    color:#000;
+    text-decoration: none;
+}
+
+#categories{
+    margin: 5px 0;
+}
+#categories li{
+    background-color: #FFFF00;
+    text-align: center;
+}
+
+#scroller #thelist {
+    margin: 5px 0 78px 0;
+}
 </style>
 
 <div id="sidebar" ng-iscroll="sidebarScroll" ng-iscroll-delay="50">
     <div class="scroller">
             <ul id="categories" class="ui small fluid vertical menu">
                 <li>
-                <a href="#/menu/index" class="item" >
+                <a ng-class="getClass('/menu/index')" href="#/menu/index" class="item" >
                     全部
                     </a>
                 </li>
                 <li ng-repeat="category in categories">
-                <a href="#/menu/{{category.name}}" class="item" >
+                <a ng-class="getClass('/menu/{{category.name}}')" href="#/menu/{{category.name}}" class="item" >
                         {{ category.name }}
                     </a>
                 </li>
@@ -141,8 +161,9 @@ background-color: yellow;
 	</div>
 </div>
 <div id="order-info" style="display:{{ifDisplay}}" >
-    <a href="#/order">测试</a>
-    总价{{ totalprice }}总{{totalcount}}件
+    <a href="#/order">
+    已选 ({{totalcount}}单品 共{{ totalprice }}元)
+    </a>
 
 </div>
 

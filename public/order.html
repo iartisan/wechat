@@ -1,45 +1,81 @@
 <style>
 
+    .header{
+        position: absolute;
+z-index: 2;
+top:0;
+left: 0;
+width: 100%;
+height: 48px;
+padding: 0;
+background-color: #fff000;
+    }
+    #order-header{
+	position:absolute; z-index:1;
+    left:10%;top:48px;
+	width:80%;
+    height: 22px;
+	overflow:auto;
+    border-bottom:1px solid #4A7EBB;
+    }
+
+    #orderWrapper{
+	position:absolute; z-index:1;
+    left:10%;bottom:98px;top:70px;
+	width:80%;
+	overflow:auto;
+    }
+    #submit{
+	position:absolute; z-index:1;
+    left:10%;bottom:49px;
+	width:80%;
+    height:49px;
+	overflow:auto;
+    border-top:1px solid #4A7EBB;
+    }
     ul#order{
         list-style:none;
+        margin: 0;
+        padding: 0;
     }
     .order-row{
         width: 100%;
-        display:block;
+        display:table;
     }
     .clearfix:after{
         clear:both;
     }
     .order-column{
-        float:left;
+        display:table-cell;
         text-align:center;
     }
 
-    .order-num{
-        width: 10%;
-        height: 22px;
-    }
     .order-element{
         width: 30%;
     }
+    #orderconfirm{
+        background-color: #DCE6F2;
+        
+    }
 </style>
+<div id="orderconfirm">
+<div class="header">
+</div>
+<div id="order-header"  class="order-row">
+    <div class="order-column order-element">菜品名称</div>
+    <div class="order-column order-element">折后价</div>
+    <div class="order-column order-element">数量</div>
+</div>
 <div id="orderWrapper" ng-iscroll="orderWrapper" ng-iscroll-delay='50'>
     <div id="scroller">
-        <div id="ifOrderEmpty" style="display:{{ifOrderEmpty}}">
+        <div id="ifOrderEmpty" style="display:{{ifOrderEmpty}};width:100%;text-align:center;">
             <a href="#/menu">请前往菜单页点菜</a>
         </div>
-        <ul id="order">
+        <ul id="order" class="clearfix">
             <li>
-                <div class="order-row clearfix">
-                    <div class="order-column order-num"></div>
-                    <div class="order-column order-element">菜品名称</div>
-                    <div class="order-column order-element">折后价</div>
-                    <div class="order-column order-element">数量</div>
-                </div>
             </li>
             <li ng-repeat="oIa in order track by $index">
                 <div class="order-row">
-                    <div class="order-column order-num">1</div>
                     <div class="order-column order-element">{{oIa.name}}</div>
                     <div class="order-column order-element">{{oIa.price}}</div>
                     <div class="order-column order-element">
@@ -52,9 +88,12 @@
         </ul>
     </div>
 </div>
-<div id="totalOrder">统计总价</div>
-<div id="totalOrder">
-    <button ng-click="pushOrder()">提交</button>
-    <a href="#/menu">继续选择</a>
-    <a href="#/address">填写地址</a>
+<div id="submit">
+    <div id="totalOrder">统计总价</div>
+    <div id="totalOrder">
+        <button ng-click="pushOrder()">提交</button>
+        <a href="#/menu">继续选择</a>
+        <a href="#/address">填写地址</a>
+    </div>
+</div>
 </div>

@@ -10,11 +10,18 @@ angular.module('myApp.controllers', []).
   }])
   .controller('footerCtrl',[function(){
   }])
-  .controller('MenuCtrl', ['$scope','$http','orderService','$routeParams',function($scope,$http,orderService,$routeParams) {
+  .controller('MenuCtrl', ['$scope','$http','orderService','$routeParams','$location',function($scope,$http,orderService,$routeParams,$location) {
 
       $scope.errors = [];
       $scope.msgs = [];
-      $scope.ifDisplay = orderService.ifDisplay;
+
+      $scope.getClass = function(path) {
+    if ($location.path().substr(0, path.length) == path) {
+      return "active"
+    } else {
+      return ""
+    }
+}
 
       //$scope.ifDisplay = iArtConfig.orderDisplay();
 
@@ -66,7 +73,9 @@ angular.module('myApp.controllers', []).
 
       $scope.order = orderService.order;
 
-          $scope.ifDisplay = orderService.checkDisplay();
+        $scope.ifDisplay = orderService.ifDisplay;
+        $scope.totalcount = orderService.totalcount;
+        $scope.totalprice = orderService.totalprice;
 
       this.searchDish=function(order_id){
       }
@@ -79,16 +88,17 @@ angular.module('myApp.controllers', []).
           
             dish.count=orderService.addDish(dish);
           $scope.order = orderService.order;
-          $scope.ifDisplay = orderService.checkDisplay();
+          $scope.ifDisplay = orderService.ifDisplay;
           $scope.totalprice = orderService.totalprice;
           $scope.totalcount = orderService.totalcount;
+          console.log(orderService.ifDisplay);
           
       }
 
       $scope.subDish = function(dish){
               dish.count=orderService.subDish(dish);
           $scope.order = orderService.order;
-          $scope.ifDisplay = orderService.checkDisplay();
+          $scope.ifDisplay = orderService.ifDisplay;
           $scope.totalprice = orderService.totalprice;
           $scope.totalcount = orderService.totalcount;
       }

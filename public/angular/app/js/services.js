@@ -26,13 +26,14 @@ angular.module('myApp.services', []).
         var i=this.searchDish(dish);
         if(i!=null){
             this.order[i].count += 1;
+        this.checkDisplay();
         return this.order[i].count;
         }else{
             dish.count = 1;
             this.order.push(dish);
+        this.checkDisplay();
             return dish.count;
         }
-        this.checkDispaly;
     }
 
     this.subDish = function(dish){
@@ -40,10 +41,12 @@ angular.module('myApp.services', []).
         var i=this.searchDish(dish);
         if(this.order[i].count>1){
             this.order[i].count -= 1;
+        this.checkDisplay();
         return this.order[i].count;
         }else{
             this.order.splice(i,1);
             dish.count = 0;
+        this.checkDisplay();
             return dish.count;
         }
 
@@ -68,9 +71,9 @@ angular.module('myApp.services', []).
 
             }
             this.ifDisplay = "block";
-            return "block";
+        }else{
+            this.ifDisplay = "none";
         }
-        return "none";
     }
 })
 
