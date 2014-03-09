@@ -13,9 +13,9 @@
 @section('content')
 	<div class="page-header">
 		<h3>
-			餐品管理
+			店铺管理
 			<div class="pull-right">
-				<a href="{{{ URL::to('admin/stores/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 创建</a>
+				@if ($count==0)<a href="{{{ URL::to('admin/stores/create') }}}" class="btn btn-small btn-info iframe"><span class='glyphicon glyphicon-plus-sign'></span> 创建</a> @endif
 			</div>
 		</h3>
 	</div>
@@ -24,12 +24,12 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">名称</th>
-				<th class="col-md-1">类型</th>
-				<th class="col-md-1">价格</th>
-				<th class="col-md-1">状态</th>
+				<th class="col-md-1">地址</th>
+				<th class="col-md-1">电话</th>
+				<th class="col-md-1">触发关键字</th>
 				<th class="col-md-1">标签</th>
-				<th class="col-md-1">所需时间</th>
-				<th class="col-md-1">发布时间</th>
+				<th class="col-md-1">地理坐标经度</th>
+				<th class="col-md-1">地理坐标纬度</th>
 				<th class="col-md-1">图片</th>
 				<th class="col-md-1">操作</th>
 			</tr>
@@ -52,7 +52,7 @@
 				},
 				"bProcessing": true,
 		        "bServerSide": true,
-		        "sAjaxSource": "{{ URL::to('admin/blogs/data') }}",
+		        "sAjaxSource": "{{ URL::to('admin/stores/data') }}",
 		        "fnDrawCallback": function ( oSettings ) {
 	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
 	     		}

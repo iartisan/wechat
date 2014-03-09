@@ -18,6 +18,7 @@ config(['$routeProvider','$locationProvider', function($routeProvider,$locationP
   $routeProvider.when('/menu/:name', {templateUrl: 'menu.html', controller: 'MenuCtrl'});
   $routeProvider.when('/dish/:dishId', {templateUrl: 'dish.html', controller: 'DishCtrl'});
   $routeProvider.when('/order', {templateUrl: 'order.html', controller: 'OrderCtrl'});
+  $routeProvider.when('/address', {templateUrl: 'address.html', controller: 'AddressCtrl'});
   $routeProvider.when('/orderSuccess', {templateUrl: 'orderSuccess.html'});
   $routeProvider.when('/test', {templateUrl: 'test.html', controller: 'TestCtrl'});
   $routeProvider.otherwise({redirectTo: '/menu/index'});

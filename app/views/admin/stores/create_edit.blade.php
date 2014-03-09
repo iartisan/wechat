@@ -19,13 +19,13 @@
 
 	<div class="tab-content">
 		<!-- General tab -->
-		<form class="form-horizontal" method="post" action="@if (isset($foods)){{ URL::to('admin/stores/' . $foods->id . '/edit') }}@endif" enctype="multipart/form-data" >
+		<form class="form-horizontal" method="post" action="@if (isset($stores)){{ URL::to('admin/stores/' . $stores->id . '/edit') }} @endif" enctype="multipart/form-data" >
 		<div class="table table-striped" id="tab-general">
 			<!-- Post Title -->
 			<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                 <div class="col-md-12">
                     <label class="control-label" for="title">名称</label>
-					<input class="form-control" type="text" name="stores_name" id="title" value="{{{ isset($foods) ? $foods->name:null }}}" />
+					<input class="form-control" type="text" name="stores_name" id="title" value="{{{ isset($stores) ? $stores->name:null }}}" />
 				</div>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 			<div class="form-group">
                 <div class="col-md-12">
                     <label class="control-label" for="title">地址</label>
-					<input class="form-control" type="text" name="stores_address" id="stores_address" onblur="Doit()" value="{{{ isset($foods) ? $foods->name:null }}}"  />
+					<input class="form-control" type="text" name="stores_address" id="stores_address" onblur="Doit()" value="{{{ isset($stores) ? $stores->address:null }}}"  />
 				</div>
 			</div>
 		</div>
@@ -43,26 +43,26 @@
 			<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                 <div class="col-md-12">
                     <label class="control-label" for="title">电话</label>
-					<input class="form-control" type="text" name="stores_phone" id="title" value="{{{ isset($foods) ? $foods->name:null }}}" />
+					<input class="form-control" type="text" name="stores_phone" id="title" value="{{{ isset($stores) ? $stores->phone:null }}}" />
 				</div>
 			</div>
 		
 			<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
 				<div class="col-md-12">
 	                <label class="control-label" for="content">图片上传</label>
-				    <input class="form-control" type="file"  name="photo" id="photo" value="{{{ Input::old('pic1_url', isset($foods) ? $foods->pic : null ) }}}" />
+				    <input class="form-control" type="file"  name="photo" id="photo" value="" />
 				</div>
 			</div>
 			<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
 				<div class="col-md-12">
 					<label class="control-label" for="title">店面介绍</label>
-	                <textarea class="form-control" type="text" name="stores_message" id="title" value="{{{ isset($foods) ? $foods->tag :null}}}" rows="5" ></textarea>
+	                <textarea class="form-control" type="text" name="stores_message" id="title" value="{{{ isset($stores) ? $stores->message :null}}}" rows="5" >{{{ isset($stores) ? $stores->message :null}}}</textarea>
 				</div>
 			</div>
 			<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
 				<div class="col-md-12">
 					<label class="control-label" for="title">触发关键字</label>
-	                <input class="form-control" type="text" name="stores_keyword" id="title" value="{{{ isset($foods) ? $foods->tag :null}}}" />
+	                <input class="form-control" type="text" name="stores_keyword" id="title" value="{{{ isset($stores) ? $stores->keyword :null}}}" />
 				</div>
 			</div>
 		</div>
@@ -79,7 +79,7 @@
 		  <button type="button" onclick="Doit()"  class="btn btn-default">搜索</button>
 		</div>
 		<div id="allmap" style="width:100%;height:500px;margin-top:10px;"></div>
-		<input type=text value="" name="pointer_x" id="pointer_x" /> <input type=text value="" id="pointer_y" name="pointer_y" /><br />
+		<input type=text value="{{{ isset($stores) ? $stores->pointer_x :null}}}" name="pointer_x" id="pointer_x" /> <input type=text value="{{{ isset($stores) ? $stores->pointer_y :null}}}" id="pointer_y" name="pointer_y" /><br />
 	</div>
 	<div class="form-group">
 		<div class="col-md-12">
@@ -138,5 +138,6 @@
 	     		}
 			});
 		});
+		Doit();
 	</script>
 @stop

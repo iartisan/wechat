@@ -1,9 +1,6 @@
 @extends('admin.layouts.default')
 
 {{-- Web site Title --}}
-@section('title')
-{{{ $title }}} :: @parent
-@stop
 
 @section('keywords')Blogs administration @stop
 @section('author')Laravel 4 Bootstrap Starter SIte @stop
@@ -16,11 +13,7 @@
 			订单管理
 		</h3>
 	</div>
-<<<<<<< HEAD
-	<button type="button" class="btn btn-info"><a href="http://wechat.demo.com/export.php" target="_blank">导出为excel</a></button>
-=======
 	<button type="button" class="btn btn-info"><a href="../export.php" target="_blank">导出为excel</a></button>
->>>>>>> huihui
 	<table id="blogs" class="table table-striped table-hover">
 		<thead>
 			<tr>
