@@ -46,15 +46,17 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('comments', 'AdminCommentsController');
 
     #store Management
-    Route::controller('stores', 'AdminStoresController');
+   
     Route::get('stores/{id}/edit', 'AdminStoresController@getEdit');
     Route::post('stores/{id}/edit', 'AdminStoresController@postEdit');
+    Route::controller('stores', 'AdminStoresController');
+    
     
     #steyls Management
     Route::controller('styles', 'AdminStylesController');
     Route::get('styles/{id}/edit', 'AdminStylesController@getEdit');
     Route::post('styles/{id}/edit', 'AdminStylesController@postEdit');
-    Route::controller('styles', 'AdminStylesController');
+ 
 
     # Blog Management
     Route::get('blogs/{post}/show', 'AdminBlogsController@getShow');
@@ -109,6 +111,7 @@ Route::controller('user', 'UserController');
 Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
 //Route::get('sendmsg/index', 'SendmsgController@getFirst');
 Route::post('getmsg', 'GetmsgController@getIndex');
+Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::

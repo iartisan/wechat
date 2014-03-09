@@ -12,25 +12,22 @@
 	header( "Pragma: public ");
 	mysql_connect("localhost","root","goodluck");
 	mysql_select_db('wechat');
-	$week = date("W", time());
-<<<<<<< HEAD
-	$str1="select * from orders";
-	$q=mysql_query($str1);
-	echo "编号\t省份\t用户名\t信息\t电话号码\t日期\t总积分\t转发积分\t评论积分\t排名\r\n";
+	$str="select * from orders";
+	$q=mysql_query($str);
+	echo "订单号\t下单时间\t顾客名\t菜品\t手机号码\t费用\t折扣\t支付状态\t备注\r\n";
 	while($rows = mysql_fetch_array($q))
 	 {
-		echo $rows['id']."\t";
-		echo $rows['name']."\t";
+		echo "VG".$date(YMD).$rows['id']."\t";
 		echo $rows['created_at']."\t";
+		echo $rows['name']."\t";
+		$sql="select count(*) as count from ordersmsg where of_orders=".$id."";
+		$query=mysql_query($sql);
+		echo $rows['phone']."\t";
 		echo $rows['price']."\t";
+		echo $rows['rebate']."\t";
+		echo $rows['pay']."\t";
 		echo $rows['remark']."\r\n";
 		//echo "";
 	}	
-=======
-	$str="select * from orders";
-	$q=mysql_query($str);
-	echo mysql_num_rows($q);
-		
->>>>>>> huihui
  ?>
 

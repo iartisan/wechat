@@ -69,6 +69,7 @@ class AdminBlogsController extends AdminController {
         $this->foods->name   = Input::get('food_name');
         $this->foods->type   = Input::get('type');
         $this->foods->price  = Input::get('price');
+        $this->foods->rebate = Input::get('rebate')*10;
         $this->foods->status = Input::get('status');
         $this->foods->tag    = Input::get('tag');
         $this->foods->times  = Input::get('times');
@@ -146,6 +147,7 @@ class AdminBlogsController extends AdminController {
         $foods->name   = Input::get('food_name');
         $foods->type   = Input::get('type');
         $foods->price  = Input::get('price');
+        $foods->rebate = Input::get('rebate')*10;
         $foods->status = Input::get('status');
         $foods->tag    = Input::get('tag');
         $foods->times  = Input::get('times');
@@ -218,15 +220,14 @@ class AdminBlogsController extends AdminController {
     public function getData()
     {
         //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price', 'foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","0");
+        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price', 'foods.rebate as ownername','foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","0");
         return Datatables::of($posts)
         ->edit_column('foods', '{{ DB::table(\'foods\')->where(\'id\', \'=\', $id)->count() }}')
         ->add_column('图片','<img class="iframe" src="../img/{{{$id  }}}.jpg" width=50 height=50 />')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/blogs/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
                 <a href="{{{ URL::to(\'admin/blogs/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">删除</a>
             ')
-
-
+        ->edit_column('ownername','{{ $ownername/10 }}')
         ->remove_column('id')
         ->make();
     }

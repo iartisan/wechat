@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersmsgsTable extends Migration {
+class CreateClientsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class CreateOrdersmsgsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('ordersmsgs', function(Blueprint $table) {
+		Schema::create('clients', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('of_foods');
-			$table->integer('count');
-			$table->float('price');
-			$table->integer('ofid');
+			$table->integer('of_contact');
+			$table->string('only_mark')->unique();
 			$table->timestamps();
 		});
 	}

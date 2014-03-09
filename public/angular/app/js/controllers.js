@@ -140,7 +140,7 @@ angular.module('myApp.controllers', []).
 
       $scope.pushOrder = function(){
           $http.post('getmsg',$scope.order).success(function(data,status,headers,config){
-              $location.path('/orderSuccess');
+              //$location.path('/orderSuccess');
           }).error()
       }
   }])

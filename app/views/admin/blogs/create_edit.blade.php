@@ -51,6 +51,13 @@
 
 				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
 					<div class="col-md-12">
+                        <label class="control-label" for="content">会员折扣(请输入1-10之间的数字。如:9.5代表九五折)</label>
+						<input class="form-control" type="text" name="rebate" id="title" value="{{{ isset($foods) ? ($foods->rebate)/10 : null }}}" />
+					</div>
+				</div>
+
+				<div class="form-group {{{ $errors->has('content') ? 'error' : '' }}}">
+					<div class="col-md-12">
 						 <label class="control-label" for="title">状态</label>
                         <select class="form-control" name="status">
 						  <option>上架</option>

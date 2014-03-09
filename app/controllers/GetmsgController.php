@@ -27,31 +27,28 @@ class GetmsgController extends BaseController {
     public function getIndex()
     {
         $data = json_decode(file_get_contents("php://input"));
-        return $data;
-        /*
-        $this->orders->name='a';
+        $this->orders->price='10';
         $this->orders->phone='123456';
         $this->orders->remark='good';
         $this->orders->pay='none';
         $this->orders->save();
         $id=$this->orders->id;
-        $i=0;
         $price=0;
-        $str=array();
         foreach($data as $d)
         {
-            $this->ordersmsgs->name=$d->name;
-            $this->ordersmsgs->count=$d->count;
-            $this->ordersmsgs->price=$d->price;
-            //$this->ordersmsgs->save();
-            $price=$price+(int)($d->price);
-            //echo $this->ordersmsgs->name."\n";
-            $str[]=['name'=>$this->ordersmsgs->name,'count'=>$this->ordersmsgs->count,'price'=>$this->ordersmsgs->price,'ofid'=>$id];
-            $i++;
+            $ordersmsgs = new Ordersmsgs;
+            $ordersmsgs->of_foods=$d->id;
+            $ordersmsgs->count=$d->count;
+            $ordersmsgs->price=$d->price;
+            $ordersmsgs->of_orders=$id;
+            $ordersmsgs->rebate=$d->rebate;
+            $ordersmsgs->save();
+            $price=$price+(int)($d->price)*(int)($d->count);
         }
-        $this->ordersmsgs->Insert($str);
         $affectedRows = Orders::where('id', '=', $id)->update(array('price' => $price));
-        echo $price;
-        */
+        if($affectedRows)
+        {
+            
+        }
     }
 }
