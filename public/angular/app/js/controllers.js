@@ -10,7 +10,7 @@ angular.module('myApp.controllers', []).
   }])
   .controller('footerCtrl',[function(){
   }])
-  .controller('MenuCtrl', ['$scope','$http','orderService',function($scope,$http,orderService) {
+  .controller('MenuCtrl', ['$scope','$http','orderService','$routeParams',function($scope,$http,orderService,$routeParams) {
 
       $scope.errors = [];
       $scope.msgs = [];
@@ -18,16 +18,57 @@ angular.module('myApp.controllers', []).
 
       //$scope.ifDisplay = iArtConfig.orderDisplay();
 
-//      $scope.output = testService.label;
+        //$scope.output = testService.label;
 
-      $http.get('sendmsg').success(function(data){
-          for(var i =0; data[i];i++)
-          data[i].count=0;
-          $scope.dishes = data;
-      }).error(function(data,status,header,config){
-          //错误处理
+                    $http.get('sendtype').success(function(data){
+                        $scope.categories = data;
+                    });
+        if($routeParams.name == 'index'){
+                $http.get('sendmsg/index').success(function(data){
+                    for(var i =0; data[i];i++)
+                    data[i].count=0;
+                    $scope.dishes = data;
+                if($scope.order.length!=0){
+                    for(var i =0; $scope.order[i]; i++){
+                            for(var j =0; $scope.dishes[j]; j++){
+                                if($scope.order[i].id == $scope.dishes[j].id){
+                                    $scope.dishes[j].count=$scope.order[i].count;
+                                }
+                            }
+                    }
+                }
+                }).error(function(data,status,header,config){
+                    //错误处理
 
-      });
+                });
+        }else{
+                $http.get('sendmsg/'+$routeParams.name).success(function(data){
+                    for(var i =0; data[i];i++)
+                    data[i].count=0;
+                    $scope.dishes = data;
+                if($scope.order.length!=0){
+                    for(var i =0; $scope.order[i]; i++){
+                            for(var j =0; $scope.dishes[j]; j++){
+                                if($scope.order[i].id == $scope.dishes[j].id){
+                                    $scope.dishes[j].count=$scope.order[i].count;
+                                }
+                            }
+                    }
+                }
+                }).error(function(data,status,header,config){
+                    //错误处理
+
+                });
+        }
+
+      //作用域真的要了解一下了
+      //console.log($scope.dishes);
+
+      $scope.order = orderService.order;
+
+
+      this.searchDish=function(order_id){
+      }
 
       $scope.addDish = function(dish){
          //$http.post('json/addDish.php',dish).success(function(data,status,headers,config){
@@ -75,7 +116,7 @@ angular.module('myApp.controllers', []).
     };
 
   }])
-  .controller('OrderCtrl', ['$scope','$http','orderService',function($scope,$http,orderService) {
+  .controller('OrderCtrl', ['$scope','$http','$location','orderService',function($scope,$http,$location,orderService) {
       $scope.order = orderService.order;
       $scope.ifOrderEmpty = 'none';
       
@@ -99,13 +140,12 @@ angular.module('myApp.controllers', []).
 
       $scope.pushOrder = function(){
           $http.post('getmsg',$scope.order).success(function(data,status,headers,config){
-              console.log(data);
+              //$location.path('/orderSuccess');
           }).error()
       }
   }])
-  .controller('DishCtrl', ['$scope','$routeParams','orderService',function($scope,$routeParams,$orderService) {
+  .controller('DishCtrl', ['$scope','$routeParams','orderService','mymodal',function($scope,$routeParams,$orderService,mymodal) {
       $scope.dish_id = $routeParams.dishId;
-
   }])
   .controller('TestCtrl', [function() {
 
