@@ -165,7 +165,7 @@ angular.module('myApp.controllers', []).
   .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,$orderService,$http) {
       $scope.update = function(user){
           $scope.customer = angular.copy(user);
-          $http.post('addAddress',$scope.customer).success(function(data,status,headers,config){
+          $http.post('getclient',$scope.customer).success(function(data,status,headers,config){
               //$location.path('/orderSuccess');
           }).error()
       }

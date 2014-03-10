@@ -109,7 +109,6 @@ Route::controller('user', 'UserController');
 
 #获取发送数据
 Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
-//Route::get('sendmsg/index', 'SendmsgController@getFirst');
 Route::post('getmsg', 'GetmsgController@getIndex');
 Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');

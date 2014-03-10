@@ -26,6 +26,7 @@
 				<th class="col-md-1">名称</th>
 				<th class="col-md-1">类型</th>
 				<th class="col-md-1">价格</th>
+				<th class="col-md-1">详情介绍</th>
 				<th class="col-md-1">会员折扣</th>
 				<th class="col-md-1">状态</th>
 				<th class="col-md-1">标签</th>
