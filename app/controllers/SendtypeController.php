@@ -24,6 +24,10 @@ class SendtypeController extends BaseController {
      */
     public function getIndex()
     {
+        session_start();
+            $fuck = $_SESSION['open_id'];
+            return var_dump($fuck);
+            return "fuck";
         $styles = $this->styles->orderBy('status', 'asc')->get();
         return Response::json($styles)->setCallback(Input::get('callback'));
     }

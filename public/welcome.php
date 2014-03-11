@@ -1,3 +1,8 @@
+<?php
+    $open_id = $_GET['open_id'];
+    session_start();
+    $_SESSION['open_id'] = $open_id;
+?>
 <!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org">
 <head>
