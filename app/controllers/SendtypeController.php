@@ -27,14 +27,9 @@ class SendtypeController extends BaseController {
     public function getIndex()
     {
         session_start();
-<<<<<<< HEAD
             $fuck = $_SESSION['open_id'];
-            return var_dump($fuck);
-            return "fuck";
-=======
         $this->clients->only_mark=$_SESSION['open_id'];
         $this->clients->save();
->>>>>>> f1e8842b24b780aabeca130e8343a4aeb1e40225
         $styles = $this->styles->orderBy('status', 'asc')->get();
         return Response::json($styles)->setCallback(Input::get('callback'));
     }
