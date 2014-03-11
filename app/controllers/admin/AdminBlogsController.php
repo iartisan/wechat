@@ -222,7 +222,7 @@ class AdminBlogsController extends AdminController {
     public function getData()
     {
         //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price', 'foods.content','foods.rebate as ownername','foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","0");
+        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price', 'foods.content','foods.rebate as ownername','foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","1");
         return Datatables::of($posts)
         ->edit_column('foods', '{{ DB::table(\'foods\')->where(\'id\', \'=\', $id)->count() }}')
         ->add_column('图片','<img class="iframe" src="../img/{{{$id  }}}.jpg" width=50 height=50 />')

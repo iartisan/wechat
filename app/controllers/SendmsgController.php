@@ -17,7 +17,7 @@ class SendmsgController extends BaseController {
     public function __construct(Post $post,Foods $foods,Clients $clients,Contacts $contacts,Loves $loves)
     {
         session_start();
-       $this->value=$_SESSION['client_id'];
+        $this->value=$_SESSION['client_id'];
         parent::__construct();
         $this->post = $post;
         $this->foods = $foods;
@@ -50,7 +50,6 @@ class SendmsgController extends BaseController {
     }
     public function getUsermsg()
     {
-        session_start();
         $count = $this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
         if($count>0)
         {
@@ -73,7 +72,6 @@ class SendmsgController extends BaseController {
     }
    public function  getUserlove($id,$status)
    {
-        session_start();
         $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('of_food','=',$id)->count();
         if($count==0)
         {
