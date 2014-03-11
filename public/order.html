@@ -1,6 +1,15 @@
 <style>
 
     #orderconfirm{
+        position: absolute;
+z-index: 2;
+top:0;
+left: 0;
+bottom:49px;
+width: 100%;
+padding: 0;
+text-align: center;
+
         background-color: #DCE6F2;
         *zoom: 1;
     }
@@ -30,7 +39,7 @@ text-align: center;
 	position:absolute; z-index:1;
     left:10%;top:48px;
 	width:80%;
-    height: 22px;
+    height: 25px;
 	overflow:auto;
     border-bottom:1px solid #4A7EBB;
     color:#fff;
@@ -46,7 +55,7 @@ text-align: center;
 	position:absolute; z-index:1;
     left:10%;bottom:49px;
 	width:80%;
-    height:49px;
+    height:98px;
 	overflow:auto;
     border-top:1px solid #4A7EBB;
     }
@@ -72,7 +81,6 @@ text-align: center;
     }
     #orderconfirm{
         background-color: #DCE6F2;
-        
     }
 </style>
 <div id="orderconfirm">
@@ -108,10 +116,16 @@ text-align: center;
 </div>
 <div id="submit">
     <div id="totalOrder">统计总价</div>
-    <div id="totalOrder">
-        <button ng-click="pushOrder()">提交</button>
-        <a href="#/menu">继续选择</a>
+    <div id="address-block" ng-show="address!='n'">
+        电话：{{address.phone}}
+        地址：{{address.address}}
         <a href="#/address">填写地址</a>
+    </div>
+    <div id="totalOrder">
+        
+        <button ng-click="pushOrder()" ng-show="address!='n'">提交</button>
+        <a href="#/address" ng-show="address=='n'">填写地址</a>
+        <a href="#/menu">继续选择</a>
     </div>
 </div>
 </div>

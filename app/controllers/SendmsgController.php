@@ -13,12 +13,13 @@ class SendmsgController extends BaseController {
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Post $post,Foods $foods,Clients $clients)
+    public function __construct(Post $post,Foods $foods,Clients $clients,Contacts $contacts)
     {
         parent::__construct();
         $this->post = $post;
         $this->foods = $foods;
         $this->clients = $clients;
+        $this->contacts = $contacts;
     }
 
     /**
@@ -48,10 +49,10 @@ class SendmsgController extends BaseController {
     public function getUsermsg()
     {
         session_start();
-        $count = $this->clients->where('only_mark','=',$_SESSION['open_id'])->count();
+        $count = $this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
         if($count>0)
         {
-            $msg = $this->clients->where('only_mark','=',$_SESSION['open_id'])->get();
+            $msg=$this->contacts->where('of_client','=',$_SESSION['client_id'])->get();
         }
         else
         {

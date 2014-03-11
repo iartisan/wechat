@@ -136,7 +136,8 @@ angular.module('myApp.controllers', []).
       $scope.ifOrderEmpty = 'none';
       
         $http.get('senduser').success(function(data){
-
+            $scope.address=data[0];
+            console.log($scope.address);
         }).error(function(data,status,header,config){
         });
 
