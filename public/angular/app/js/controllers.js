@@ -33,7 +33,14 @@ angular.module('myApp.controllers', []).
         if($routeParams.name == 'index'){
                 $http.get('sendmsg/index').success(function(data){
                     for(var i =0; data[i];i++)
+                    {
                     data[i].count=0;
+                    if(data[i].loves==null&&data[i].loves==0){
+                        data[i].favorite=false;
+                    }else if(data[i].loves == 1){
+                        data[i].favorite=true;
+                    }
+                    }
                     $scope.dishes = data;
                 if($scope.order.length!=0){
                     for(var i =0; $scope.order[i]; i++){
@@ -133,11 +140,12 @@ angular.module('myApp.controllers', []).
   }])
   .controller('OrderCtrl', ['$scope','$http','$location','orderService',function($scope,$http,$location,orderService) {
       $scope.order = orderService.order;
+        $scope.totalcount = orderService.totalcount;
+        $scope.totalprice = orderService.totalprice;
       $scope.ifOrderEmpty = 'none';
       
         $http.get('senduser').success(function(data){
-            $scope.address=data;
-            console.log($scope.address);
+            $scope.address=data[0];
         }).error(function(data,status,header,config){
         });
 
@@ -146,17 +154,21 @@ angular.module('myApp.controllers', []).
             dish.count=orderService.addDish(dish);
           $scope.order = orderService.order;
           $scope.ifDisplay = orderService.checkDisplay();
+        $scope.totalcount = orderService.totalcount;
+        $scope.totalprice = orderService.totalprice;
           
       }
 
       $scope.subDish = function(dish){
               dish.count=orderService.subDish(dish);
           $scope.order = orderService.order;
+        $scope.totalprice = orderService.totalprice;
+        $scope.totalcount = orderService.totalcount;
           $scope.ifDisplay = orderService.checkDisplay();
           if($scope.order.length == 0){
               $scope.ifOrderEmpty = 'block';
+        $scope.totalprice = 0;
           }
-          console.log($scope.ifOrderEmpty);
       }
 
       $scope.pushOrder = function(){
@@ -170,7 +182,11 @@ angular.module('myApp.controllers', []).
                 $http.get('sendone/'+$scope.dish_id).success(function(data){
                     $scope.dish = data[0];
                     $scope.dish.count = 0;
-                    $scope.dish.favorite = 0;
+                    if($scope.dish.loves==null&&$scope.dish.loves==0){
+                        $scope.dish.favorite = false;
+                    }else if($scope.dish.loves=1){
+                        $scope.dish.favorite = true;
+                    }
                     console.log($scope.dish);
                 $scope.dish.count = orderService.searchDishcount($scope.dish);
                 }).error(function(data,status,header,config){
