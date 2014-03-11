@@ -69,7 +69,12 @@ class AdminStylesController extends AdminController {
     }
     public function postEdit($id)
     {
-        return $id;
+        $styles=Styles::find($id);
+        $styles->name= Input::get('type_name');
+        if($styles->save())
+        {
+            return Redirect::to('admin/styles/edit/' .$id )->with('success', Lang::get('admin/blogs/messages.update.success'));
+        }
     }
     public function getDelete($id)
     {

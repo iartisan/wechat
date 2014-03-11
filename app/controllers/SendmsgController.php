@@ -73,9 +73,17 @@ class SendmsgController extends BaseController {
    public function  getUserlove($id,$status)
    {
         $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('of_food','=',$id)->count();
+        if($status=='false')
+        {
+            $status=0;
+        }
+        else
+        {
+            $status=1;
+        }
         if($count==0)
         {
-            $this->loves->of_foods=$id;
+            $this->loves->of_food=$id;
             $this->loves->status=$status;
             $this->loves->of_client=$_SESSION['client_id'];
             $this->loves->save();
