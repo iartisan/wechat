@@ -45,7 +45,6 @@ class SendmsgController extends BaseController {
     }
     public function getOne($id)
     {
-        //$foods = $this->foods->where('id','=',$id)->get();
         $foods = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id) as love_count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from ordersmsgs where of_food=foods.id) as orderscount"))->where('id','=',$id)->get();
         return Response::json($foods)->setCallback(Input::get('callback'));
     }
@@ -87,5 +86,18 @@ class SendmsgController extends BaseController {
         {
             $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('of_food','=',$id)->update(array('status' => $status));;
         }
+   }
+   public function  getMylove()
+   {
+        $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('status','=',1)->count();
+        if($count==0)
+        {
+            return "null";
+        }
+        else
+        {
+           $msg = $this->foods->select(DB::raw("*,(select * from loves where of_food=foods.id)"))->where('of_client','=',$this->value)->where('status','=',1)->get();
+        }
+        return Response::json($msg)->setCallback(Input::get('callback'));
    }
 }
