@@ -136,7 +136,7 @@ angular.module('myApp.controllers', []).
       $scope.ifOrderEmpty = 'none';
       
         $http.get('senduser').success(function(data){
-            $scope.address=data[0];
+            $scope.address=data;
             console.log($scope.address);
         }).error(function(data,status,header,config){
         });
@@ -170,30 +170,25 @@ angular.module('myApp.controllers', []).
                 $http.get('sendone/'+$scope.dish_id).success(function(data){
                     $scope.dish = data[0];
                     $scope.dish.count = 0;
+                    $scope.dish.favorite = 0;
                     console.log($scope.dish);
                 $scope.dish.count = orderService.searchDishcount($scope.dish);
-                    /*
-                if($scope.order.length!=0){
-                    for(var i =0; $scope.order[i]; i++){
-                            for(var j =0; $scope.dishes[j]; j++){
-                                if($scope.order[i].id == $scope.dishes[j].id){
-                                    $scope.dishes[j].count=$scope.order[i].count;
-                                }
-                            }
-                    }
-                }
-                */
                 }).error(function(data,status,header,config){
                     //错误处理
 
                 });
 
+                $scope.if_like = function(dish){
+                    $http.get('sendlove/'+dish.id+'/'+!dish.favorite).success(function(data){
+                        dish.favorite = 1;
+                    }).error(function(){
+                        dish.favorite = 0;
+                    }
+                    );
+                        
+                };
 
       $scope.addDish = function(dish){
-         //$http.post('json/addDish.php',dish).success(function(data,status,headers,config){
-              //console.log(data);
-          //})
-          //$scope.ifDisplay = "block";
           
             dish.count=orderService.addDish(dish);
           
@@ -203,30 +198,13 @@ angular.module('myApp.controllers', []).
               dish.count=orderService.subDish(dish);
       }
   }])
-  .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,$orderService,$http) {
+  .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http','$location',function($scope,$routeParams,$orderService,$http,$location) {
       $scope.update = function(user){
           $scope.customer = angular.copy(user);
           $http.post('getclient',$scope.customer).success(function(data,status,headers,config){
-              //$location.path('/orderSuccess');
+              $location.path('/order');
           }).error()
       }
-            $http.get('senduser').success(function(data){
-                console.log(data);
-                /*
-            if($scope.order.length!=0){
-                for(var i =0; $scope.order[i]; i++){
-                        for(var j =0; $scope.dishes[j]; j++){
-                            if($scope.order[i].id == $scope.dishes[j].id){
-                                $scope.dishes[j].count=$scope.order[i].count;
-                            }
-                        }
-                }
-            }
-            */
-            }).error(function(data,status,header,config){
-                //错误处理
-
-            });
   }])
   .controller('TestCtrl', [function() {
 

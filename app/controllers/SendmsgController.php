@@ -51,9 +51,9 @@ class SendmsgController extends BaseController {
         if($count>0)
         {
             $id=$this->clients->where('id','=',$_SESSION['client_id'])->lists('of_contact');;
-            if($id!=null)
+            if($id[0]!=null)
             {
-                $msg=$this->contacts->where('id','=',$id)->get();
+                $msg=DB::table('contacts')->where('id','=',$id[0])->first();
             }
             else
             {

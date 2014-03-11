@@ -130,8 +130,8 @@ border-radius: 5px;
                     <div class="item">
                         <div class="image">
                             <img ng-src="img/{{dish.id}}.jpg" alt="">
-                            <a class="heart ui corner label">
-                                <i class="heart icon"></i>
+                            <a ng-click="if_like({{dish}})" class="heart ui corner label">
+                                <i class="heart  icon"></i>
                             </a>
                         </div>
                         <div class="content">
@@ -146,9 +146,9 @@ border-radius: 5px;
                         <div class="content">
                             <p>{{dish.price}}元 会员{{dish.rebate}}折</p>
                             <p class="descriptiion">
-                            <button ng-click="addDish(dish)">+</button>
+                            <button class="buttoniArt" ng-click="addDish(dish)">+</button>
                             {{dish.count}}
-                            <button ng-click="subDish(dish)" >-</button>
+                            <button class="buttoniArt" ng-click="subDish(dish)" >-</button>
                             </p>
                             <p>
                             {{dish.snippet}}

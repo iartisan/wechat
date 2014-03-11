@@ -62,7 +62,7 @@ color: #736C5E!important;
         <div class="tag_iart">
             <ul>
                 <li>
-                    <i class="heart empty icon"></i>
+                    <i ng-click="if_like(dish)" class="heart empty icon"></i>
                     125                
                 </li>
                 <li>
@@ -83,6 +83,7 @@ color: #736C5E!important;
             {{dish.name}}
             </h2>
             <p>{{dish.content}}</p>
+            <p>{{dish.favorite}}</p>
             <div class="order_block">
                             <button ng-click="addDish(dish)">+</button>
                             {{dish.count}}
