@@ -42,6 +42,9 @@
     padding: 0;
     margin: 0 0 25px 0;
 }
+#thelist .ui.items .item>.content{
+    padding: 0;
+}
 
 #thelist .ui.connected.items {
 display: table;
@@ -130,8 +133,9 @@ border-radius: 5px;
                     <div class="item">
                         <div class="image">
                             <img ng-src="img/{{dish.id}}.jpg" alt="">
-                            <a class="heart ui corner label">
-                                <i class="heart icon"></i>
+                            <a ng-click="if_like({{dish}})" class="heart ui corner label">
+                                <i class="heart  icon"  ng-show="dish.favorite"></i>
+                                <i class="heart  empty icon"  ng-show="!dish.favorite"></i>
                             </a>
                         </div>
                         <div class="content">
@@ -146,9 +150,11 @@ border-radius: 5px;
                         <div class="content">
                             <p>{{dish.price}}元 会员{{dish.rebate}}折</p>
                             <p class="descriptiion">
-                            <button ng-click="addDish(dish)">+</button>
+                            <button class="iart" ng-click="addDish(dish)">+</button>
+                            <span class="iart">
                             {{dish.count}}
-                            <button ng-click="subDish(dish)" >-</button>
+                            </span>
+                            <button class="iart" ng-click="subDish(dish)" >-</button>
                             </p>
                             <p>
                             {{dish.snippet}}

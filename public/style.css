@@ -208,3 +208,39 @@ border-top: 1px solid #444;
   transform: translateX(-50%) translateY(-50%);
 }
   
+button.iart{
+    background-color: #FFC000;
+    border:0;
+    color:#fff;
+    border-radius:5em;
+    font-size:16px;
+}
+
+span.iart{
+    background-color: #FFC000;
+    border:0;
+    color:#fff;
+    font-size:18px;
+    padding: 0 3px;
+    margin: 0 2px;
+    text-align:center;
+}
+
+.order-iart-block {
+    margin: 0 auto;
+}
+
+
+    .iArt-button{
+        text-decoration: none;
+        color:#fff;
+        background-color: #F79646;
+        padding: 10px;
+        border:2px solid #dce6f2;
+        border-radius: 5px;
+    }
+
+    button.iArt-button{
+        font-size:1em;
+        
+    }
