@@ -199,7 +199,7 @@ class AdminBlogsController extends AdminController {
     {
         // Declare the rules for the form validation
         // Check if the form validates with success
-       DB::table('foods')->where('id', '=', $id)->update(array('show' => 1));
+       DB::table('foods')->where('id', '=', $id)->update(array('show' => 0));
     /*
         // Was the blog post deleted?
         $food = Foods::find($id);
