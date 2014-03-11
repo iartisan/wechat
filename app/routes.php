@@ -55,7 +55,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     #steyls Management
     Route::controller('styles', 'AdminStylesController');
     Route::get('styles/{id}/edit', 'AdminStylesController@getEdit');
-    Route::post('styles/{id}/edit', 'AdminStylesController@postEdit');
+    Route::post('styles/edit/{id}', 'AdminStylesController@postEdit');
  
 
     # Blog Management

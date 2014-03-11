@@ -9,7 +9,7 @@
 	<!-- ./ tabs -->
 
 	{{-- Edit Blog Form --}}
-	<form class="form-horizontal" method="post" action="@if (isset($styles)){{ URL::to('admin/types/' . $styles->id . '/edit') }}@endif" enctype="multipart/form-data" >
+	<form class="form-horizontal" method="post" action="@if (isset($styles)){{ URL::to('admin/styles/edit/' . $styles->id) }}@endif" enctype="multipart/form-data" >
 		<!-- CSRF Token -->
 		<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 		<!-- ./ csrf token -->
