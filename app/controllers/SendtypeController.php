@@ -32,7 +32,7 @@ class SendtypeController extends BaseController {
         {
             $this->clients->only_mark=$_SESSION['open_id'];
             $isok=$this->clients->save();
-            $id=$this->clients->id;
+            $_SESSION['client_id']=$this->clients->id;
         }
         else
         {
@@ -40,7 +40,7 @@ class SendtypeController extends BaseController {
             $sql=$this->clients->where('only_mark', '=',$_SESSION['open_id'])->get();
             foreach($sql as $s)
             {
-                $id=$s['id'];
+                $_SESSION['client_id']=$s['id'];
             } 
         }
         $styles = $this->styles->orderBy('status', 'asc')->get();

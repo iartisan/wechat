@@ -26,12 +26,10 @@ class GetmsgController extends BaseController {
      */
     public function getIndex()
     {
+        session_start();
         $data = json_decode(file_get_contents("php://input"));
-        $this->orders->of_user=1;
-        $this->orders->name='a';
-        $this->orders->address='深圳';
-        $this->orders->price='10';
-        $this->orders->phone='123456';
+        $this->orders->of_client=$_SESSION['client_id'];
+        $this->orders->of_contact=$_SESSION['contact_id'];
         $this->orders->remark='good';
         $this->orders->pay='none';
         $this->orders->save();
@@ -46,16 +44,6 @@ class GetmsgController extends BaseController {
             $ordersmsgs->of_orders=$id;
             $ordersmsgs->rebate=$d->rebate;
             $ordersmsgs->save();
-            $price=$price+(int)($d->price)*(int)($d->count);
-        }
-        $affectedRows = Orders::where('id', '=', $id)->update(array('price' => $price));
-        if($affectedRows)
-        {
-            return "success";
-        }
-        else
-        {
-            return "fail";
         }
     }
 }

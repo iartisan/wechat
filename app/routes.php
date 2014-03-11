@@ -111,8 +111,7 @@ Route::controller('user', 'UserController');
 Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
 Route::get('sendmsg/{id}', 'SendmsgController@getOne');
 Route::post('getmsg', 'GetmsgController@getIndex');
-Route::post('getclientcontact', 'GetclientcontactController@getIndex');
-Route::post('getclientopenid', 'GetclientopenidController@getIndex');
+Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::

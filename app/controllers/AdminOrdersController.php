@@ -35,11 +35,11 @@ class AdminOrdersController extends AdminController {
     }
     public function getData()
     {
+        $posts=Orders::leftjoin('contacts','orders.of_contact','=','contacts.id')->select(array('orders.id','orders.created_at', 'contacts.name as contactsname','contacts.address as address','contacts.phone as phone','orders.pay','orders.remark'));
         //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        $posts = Orders::select(array('orders.id','orders.created_at', 'orders.name','orders.foods','orders.price','orders.rebate','orders.pay','orders.phone','orders.remark'));
+        //$posts = Orders::select(array('orders.id','orders.created_at', 'contacts.name','contacts.address','contacts.phone','orders.rebate','orders.pay','orders.remark'));
         return Datatables::of($posts)
-
-        //->edit_column('comments', '{{ DB::table(\'comments\')->where(\'post_id\', \'=\', $id)->count() }}')
+       // ->edit_column('contactsname', '{{ DB::table(\'contacts\')->where(\'id\', \'=\', $of_contact)->count() }}')
         ->edit_column('orders', '{{ DB::table(\'orders\')->where(\'id\', \'=\', $id)->count() }}')
         ->edit_column('id','VG{{{$id}}}')
         ->make();

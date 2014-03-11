@@ -8,15 +8,17 @@ class SendmsgController extends BaseController {
      */
     protected $post;
     protected $foods;
+    protected $contacts;
     /**
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Post $post,Foods $foods)
+    public function __construct(Post $post,Foods $foods,Contacts $contacts)
     {
         parent::__construct();
         $this->post = $post;
         $this->foods = $foods;
+        $this->contacts = $contacts;
     }
 
     /**
@@ -28,7 +30,7 @@ class SendmsgController extends BaseController {
     {
         if($typename=='index')
         {
-             $foods = $this->foods->get();
+             $foods = $this->foods->where('show','=',0)->get();
         }
         else
         {
@@ -38,9 +40,23 @@ class SendmsgController extends BaseController {
         // Show the page
         //return View::make('admin/stores/index', compact('posts', 'title'));
     }
-     public function getOne($id)
+    public function getOne($id)
     {
         $foods = $this->foods->where('id','=',$id)->get();
         return Response::json($foods)->setCallback(Input::get('callback'));
+    }
+    public function getUsermsg($id)
+    {
+        session_start();
+        $count = $this->contacts->where('only_mark','=',$_SESSION['open_id'])->count();
+        if($count>0)
+        {
+            $msg = $this->contacts->where('only_mark','=',$_SESSION['open_id'])->get();
+        }
+        else
+        {
+            return "null";
+        }
+        return Response::json($msg)->setCallback(Input::get('callback'));
     }
 }
