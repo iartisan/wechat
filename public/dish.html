@@ -53,6 +53,60 @@
 color: #736C5E!important;
 }
 
+.content .tab-card{
+    width: 100%;
+    text-align:center;
+    border-top:2px solid #DFCFB5;
+    display:table;
+    background-color: #F3E8D2;
+}
+
+.content .tab-card a{
+    color:#222;
+    text-decoration: none;
+    display:table-cell;
+}
+
+.content .tab-card a.active{
+    background-color: #92D050;
+}
+
+.content h2{
+    font-size:16px;
+    color:#B25154;
+}
+
+.order_block{
+    margin: 0 auto;
+    background-color: #F3E8D2;
+    width: 70%;
+    position:relative;
+}
+.order-list{
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.order-list p{
+    margin: 4px;
+    margin-left: 42px;
+}
+
+.back{
+    position:absolute;
+    top:0;
+    bottom:0;
+    background-color: #92D050;
+    padding-top: 20px;
+
+}
+.back a{
+    height: 100%;
+    line-height: 100%;
+    color:#fff;
+    text-decoration: none;
+}
+
 </style>
 <div class="dish-info">
     <div class="dish-views">
@@ -62,7 +116,8 @@ color: #736C5E!important;
         <div class="tag_iart">
             <ul>
                 <li>
-                    <i ng-click="if_like(dish)" class="heart empty icon"></i>
+                                <i ng-click="if_like(dish)" class="heart  icon"  ng-show="dish.favorite"></i>
+                                <i ng-click="if_like(dish)" class="heart  empty icon"  ng-show="!dish.favorite"></i>
                     125                
                 </li>
                 <li>
@@ -76,18 +131,35 @@ color: #736C5E!important;
         </div>
     </div>
     <div class="content">
-        <a href ng-click="selected=1" ng-init="selected=1">详情</a>
-        <a htef ng-click="selected=2">评论</a>
+        <div class="tab-card">
+            <a href ng-class="{active: selected==1}" ng-click="selected=1" ng-init="selected=1">详情</a>
+            <a htef ng-class="{active: selected==2}" ng-click="selected=2">评论</a>
+        </div>
         <div id="description_tab" ng-show="selected == 1">
             <h2>
             {{dish.name}}
             </h2>
             <p>{{dish.content}}</p>
-            <p>{{dish.favorite}}</p>
             <div class="order_block">
-                            <button ng-click="addDish(dish)">+</button>
+                <div class="order-list back">
+                    <a href="#/menu">返回</a>
+                </div>
+                <div class="order-list">
+             <p>{{dish.price}}元
+             </p>   
+             <p>
+                会员{{dish.rebate}}折
+             </p>
+                </div>
+             <div class="order-list">
+                 <div class="order-iart-block">
+                            <button class="iart" ng-click="addDish(dish)">+</button>
+                            <span class="iart">
                             {{dish.count}}
-                            <button ng-click="subDish(dish)" >-</button>
+                            </span>
+                            <button class="iart" ng-click="subDish(dish)" >-</button>
+                 </div>
+             </div>
             </div>
         </div>
         <div id="comment_tab" ng-show="selected == 2">
