@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\URL; # not sure why i need this here :c
 
 
-class Contact extends Eloquent  {
+class Contacts extends Eloquent  {
 
     /**
      * Deletes a blog post and all

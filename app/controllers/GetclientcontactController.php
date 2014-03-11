@@ -6,17 +6,15 @@ class GetclientController extends BaseController {
      * Post Model
      * @var Post
      */
-    protected $orders;
-    protected $ordersmsg;
+    protected $contacts;
     /**
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Orders $orders,Ordersmsgs $ordersmsgs)
+    public function __construct(Contacts $contacts)
     {
         parent::__construct();
-        $this->orders = $orders;
-        $this->ordersmsgs = $ordersmsgs;
+        $this->contacts = $contacts;
     }
 
     /**
@@ -27,6 +25,6 @@ class GetclientController extends BaseController {
     public function getIndex()
     {
         $data = json_decode(file_get_contents("php://input"));
-        return var_dump($data);
+        
     }
 }
