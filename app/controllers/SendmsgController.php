@@ -46,7 +46,7 @@ class SendmsgController extends BaseController {
     public function getOne($id)
     {
         //$foods = $this->foods->where('id','=',$id)->get();
-        $foods = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id) as love_count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves"))->where('id','=',$id)->get();
+        $foods = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id) as love_count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from ordersmsgs where of_food=foods.id) as orderscount"))->where('id','=',$id)->get();
         return Response::json($foods)->setCallback(Input::get('callback'));
     }
     public function getUsermsg()
