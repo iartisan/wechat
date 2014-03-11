@@ -159,12 +159,13 @@ angular.module('myApp.controllers', []).
           }).error()
       }
   }])
-  .controller('DishCtrl', ['$scope','$routeParams','orderService','mymodal',function($scope,$routeParams,$orderService,mymodal) {
+  .controller('DishCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,orderService, $http) {
                 $scope.dish_id = $routeParams.dishId;
-                $http.get('sendmsg/'+$scope.dish_id).success(function(data){
-                    for(var i =0; data[i];i++)
-                    data[i].count=0;
-                    $scope.dish = data;
+                $http.get('sendone/'+$scope.dish_id).success(function(data){
+                    $scope.dish = data[0];
+                    $scope.dish.count = 0;
+                    console.log($scope.dish);
+                $scope.dish.count = orderService.searchDishcount($scope.dish);
                     /*
                 if($scope.order.length!=0){
                     for(var i =0; $scope.order[i]; i++){
@@ -180,6 +181,21 @@ angular.module('myApp.controllers', []).
                     //错误处理
 
                 });
+
+
+      $scope.addDish = function(dish){
+         //$http.post('json/addDish.php',dish).success(function(data,status,headers,config){
+              //console.log(data);
+          //})
+          //$scope.ifDisplay = "block";
+          
+            dish.count=orderService.addDish(dish);
+          
+      }
+
+      $scope.subDish = function(dish){
+              dish.count=orderService.subDish(dish);
+      }
   }])
   .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,$orderService,$http) {
       $scope.update = function(user){

@@ -27,11 +27,6 @@ class SendtypeController extends BaseController {
     public function getIndex()
     {
         session_start();
-<<<<<<< HEAD
-            $fuck = $_SESSION['open_id'];
-        $this->clients->only_mark=$_SESSION['open_id'];
-        $this->clients->save();
-=======
         $count = Clients::where('only_mark', '=', $_SESSION['open_id'])->count();
         if($count==0)
         {
@@ -48,7 +43,6 @@ class SendtypeController extends BaseController {
                 $id=$s['id'];
             } 
         }
->>>>>>> lihui
         $styles = $this->styles->orderBy('status', 'asc')->get();
         return Response::json($styles)->setCallback(Input::get('callback'));
     }

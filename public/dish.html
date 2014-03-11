@@ -1,25 +1,96 @@
+<style>
+    .dish-info {
+    	position:absolute;
+        z-index: 2;
+        bottom:48px;
+        top:0;
+        left:0;
+        width:100%;
+    }
+
+    .dish-views{
+        background-color: #F3E8D2;
+        padding-bottom: 15px;
+        border-down: 2px solid #DDCFB4 ;
+    }
+
+    .image_iart{
+        margin: 0 auto;
+        padding-top: 12px;
+        text-align:center;
+        height: 201px;
+    }
+
+    .image_iart img{
+        border-top:1px solid #EEBAA1;
+        border-left:1px solid #EEBAA1;
+        border-right:1px solid #EEBAA1;
+    }
+
+    .tag_iart{
+        margin: 0 auto;
+        padding: 0;
+        width: 298px;
+        border: 2px solid #fff;
+        background-color: #DFCFB5;
+    }
+    .tag_iart ul{
+        margin: 0 auto;
+        padding: 0;
+        display:table;
+    }
+
+    .tag_iart ul > li{
+        line-height: 20px;
+        height: 20px;
+        font-size:.9em;
+        display:table-cell;
+        color:#fff;
+        text-align:center;
+        padding: 0 1em;
+    }
+    i.icon {
+color: #736C5E!important;
+}
+
+</style>
 <div class="dish-info">
-    <div class="image_iart">
-        <img src="http://placehold.it/250x250" alt="">
-    </div>
-    <div class="tag_iart">
-        <ul>
-            <li>红心</li>
-            <li>分享</li>
-            <li>多少人点过</li>
-        </ul>
+    <div class="dish-views">
+        <div class="image_iart">
+                        <img ng-src="img/{{dish.id}}.jpg" alt="">
+        </div>
+        <div class="tag_iart">
+            <ul>
+                <li>
+                    <i class="heart empty icon"></i>
+                    125                
+                </li>
+                <li>
+                    <i class="share icon"></i>
+                     50
+                </li>
+                <li>
+                <i class="hand up icon"></i>
+                15人点过</li>
+            </ul>
+        </div>
     </div>
     <div class="content">
-        <a href="#descirption_tab">详情</a>
-        <a htef="#comment_tab">评论</a>
-        <div id="description_tab">
+        <a href ng-click="selected=1" ng-init="selected=1">详情</a>
+        <a htef ng-click="selected=2">评论</a>
+        <div id="description_tab" ng-show="selected == 1">
             <h2>
             {{dish.name}}
             </h2>
-            <p>{{dish.description}}</p>
+            <p>{{dish.content}}</p>
             <div class="order_block">
-
+                            <button ng-click="addDish(dish)">+</button>
+                            {{dish.count}}
+                            <button ng-click="subDish(dish)" >-</button>
             </div>
+        </div>
+        <div id="comment_tab" ng-show="selected == 2">
+            测试评论tab
         </div>
 
     </div>

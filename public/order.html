@@ -1,5 +1,17 @@
 <style>
 
+    #orderconfirm{
+        background-color: #DCE6F2;
+        *zoom: 1;
+    }
+    #orderconfirm:after,#orderconfirm:before{
+        display: table;
+    content: "";
+    line-height: 0;
+    }
+    #orderconfirm:after{
+        clear:both;
+    }
     .header{
         position: absolute;
 z-index: 2;
@@ -8,7 +20,11 @@ left: 0;
 width: 100%;
 height: 48px;
 padding: 0;
-background-color: #fff000;
+text-align: center;
+    }
+
+    .header h2{
+        margin: 0;
     }
     #order-header{
 	position:absolute; z-index:1;
@@ -17,6 +33,7 @@ background-color: #fff000;
     height: 22px;
 	overflow:auto;
     border-bottom:1px solid #4A7EBB;
+    color:#fff;
     }
 
     #orderWrapper{
@@ -60,6 +77,7 @@ background-color: #fff000;
 </style>
 <div id="orderconfirm">
 <div class="header">
+    <h2>已选菜品</h2>
 </div>
 <div id="order-header"  class="order-row">
     <div class="order-column order-element">菜品名称</div>

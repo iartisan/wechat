@@ -61,6 +61,12 @@ angular.module('myApp.services', []).
         }
     }
 
+    this.searchDishcount=function(dish){
+        var i = this.searchDish(dish);
+        if(i == null)return 0;
+        if(this.order[i].count>0)return this.order[i].count;
+    }
+
     this.checkDisplay = function(){
         if(this.totalCount > 0){
             this.totalprice = 0;
