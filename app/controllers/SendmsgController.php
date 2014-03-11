@@ -96,7 +96,9 @@ class SendmsgController extends BaseController {
         }
         else
         {
-           $msg = $this->foods->select(DB::raw("*,(select * from loves where of_food=foods.id)"))->where('of_client','=',$this->value)->where('status','=',1)->get();
+            //$msg=DB::table('loves')->leftJoin('foods', 'foods.id', '=', 'loves.of_food')->join('ordersmsgs', 'ordersmsgs.of_food', '=', 'foods.id')->get();
+            //$msg=DB::table('loves')->leftJoin('foods', 'foods.id', '=', 'loves.of_food')->get();
+           //$msg = $this->foods->select(DB::raw("foods.name,(select count(*) from ordersmsgs where of_food=foods.id) as count from loves inner join foods inner join ordersmsgs where loves.of_food=foods.id and loves.status=1 and loves.of_client=4"))->groupBy('loves.id')->get();
         }
         return Response::json($msg)->setCallback(Input::get('callback'));
    }
