@@ -38,4 +38,9 @@ class SendmsgController extends BaseController {
         // Show the page
         //return View::make('admin/stores/index', compact('posts', 'title'));
     }
+     public function getOne($id)
+    {
+        $foods = $this->foods->where('id','=',$id)->get();
+        return Response::json($foods)->setCallback(Input::get('callback'));
+    }
 }
