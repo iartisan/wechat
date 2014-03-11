@@ -30,13 +30,15 @@ class SendmsgController extends BaseController {
      */
     public function getIndex($typename)
     {
+        session_start();
         if($typename=='index')
         {
-            $foods = $this->foods->select(DB::raw('*,(select count(*) from ordersmsgs where of_foods=foods.id) as count'))->where('show','=',0)->get();
+            $value=$_SESSION['client_id'];
+            $foods = $this->foods->select(DB::raw("*,(select count(*) from ordersmsgs where of_foods=foods.id) as count,(select status from loves where of_food=foods.id and of_client='$value') as loves"))->where('show','=',1)->get();
         }
         else
         {
-            $foods = $this->foods->select(DB::raw('*,(select count(*) from ordersmsgs where of_foods=foods.id) as count'))->where('show','=',0)->where('type','=',$typename)->get();
+            $foods = $this->foods->select(DB::raw('*,(select count(*) from ordersmsgs where of_foods=foods.id) as count'))->where('show','=',1)->where('type','=',$typename)->get();
         }
         return Response::json($foods)->setCallback(Input::get('callback'));
     }
@@ -68,10 +70,11 @@ class SendmsgController extends BaseController {
         }
         
     }
-   public function  getUserlove($id)
+   public function  getUserlove($id,$status)
    {
         session_start();
         $this->loves->of_foods=$id;
+        $this->loves->status=$status;
         $this->loves->of_client=$_SESSION['client_id'];
         $this->loves->save();
    }
