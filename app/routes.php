@@ -110,7 +110,8 @@ Route::controller('user', 'UserController');
 #获取发送数据
 Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
 Route::post('getmsg', 'GetmsgController@getIndex');
-Route::post('getclient', 'GetclientController@getIndex');
+Route::post('getclientcontact', 'GetclientcontactController@getIndex');
+Route::post('getclientopenid', 'GetclientopenidController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::
@@ -131,6 +132,6 @@ Route::post('{postSlug}', 'BlogController@postView');
 
 
 # Index Page - Last route, no matches
-Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
-
+//Route::get('/', array('before' => 'detectLang','uses' => 'BlogController@getIndex'));
+Route::get('/', 'UserController@getLogin');
 //Route::resource('tweets', 'TweetsController');
