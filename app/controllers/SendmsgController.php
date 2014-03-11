@@ -85,7 +85,7 @@ class SendmsgController extends BaseController {
         }
         else
         {
-            $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('of_food','=',$id)->count();
+            $count = $this->loves->where('of_client','=',$_SESSION['client_id'])->where('of_food','=',$id)->update(array('status' => $status));;
         }
    }
 }
