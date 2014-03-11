@@ -12,6 +12,8 @@
     .totalOrder.info{
     border-bottom:1px solid #4A7EBB;
     }
+
+
     #orderconfirm{
         position: absolute;
 z-index: 2;
@@ -133,7 +135,7 @@ text-align: center;
     </div>
 </div>
 <div id="submit">
-    <div class="totalOrder info">合计：{{  totalprice }}元</div>
+    <div class="totalOrder total">合计：{{  totalprice }}元</div>
     <div class="totalOrder info" style="position:relative;" ng-show="address!='n'">
         <p>
         电话：{{address.phone}}

@@ -42,19 +42,64 @@ text-align: center;
         width: 100%;
         height:20px;
     }
+
+    #address-container input{
+        display: inline-block;
+margin-bottom: 0;
+vertical-align: middle;
+    }
+
+    #address-container .controls{
+        margin-left: 180px;
+    }
+
+    #address-container label{
+        float: left;
+width: 160px;
+padding-top: 5px;
+text-align: right;
+display:block;
+margin-bottom: 5px;
+    }
+
+    #address-container .control-group{
+        margin-bottom: 20px;
+    }
 </style>
 <div id="address-container">
     <div class="address-header">
         <h2>电话和地址</h2>
     </div>
     <div class="address-form">
-    姓名: <input type="text" ng-model="user.name" /><br />
+        <div class="control-group">
+        <label for="name">
+姓名: 
+        </label>
+        <div class="controls">
+    <input type="text" ng-model="user.name" />
+        </div>
+        </div>
+        <div class="control-group">
+<label for="phone">
 <i class="star icon"></i>
-    电话: <input type="phone" ng-model="user.phone" /><br />
+ 电话: 
+</label>
+<div class="controls">
+   <input type="phone" ng-model="user.phone" />
+</div>
+        </div>
+        <div class="control-group">
+<label for="address">
 <i class="star icon"></i>
-    地址: <input type="address" ng-model="user.address" /><br />
+ 地址: 
+</label>
 
-<i class="map marker icon"></i>
+<div class="controls">
+   <input type="address" ng-model="user.address" />
+<i class="map marker icon" style="display:inline-block"></i>
+</div>
+        </div>
+
     </div>
     <div class="submit-block">
     <button class="iart-button" ng-click="update(user)">提交订单</button>

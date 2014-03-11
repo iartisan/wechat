@@ -118,7 +118,7 @@ color: #736C5E!important;
                 <li>
                                 <i ng-click="if_like(dish)" class="heart  icon"  ng-show="dish.favorite"></i>
                                 <i ng-click="if_like(dish)" class="heart  empty icon"  ng-show="!dish.favorite"></i>
-                    125                
+                                {{dish.love_count}}
                 </li>
                 <li>
                     <i class="share icon"></i>
@@ -126,7 +126,7 @@ color: #736C5E!important;
                 </li>
                 <li>
                 <i class="hand up icon"></i>
-                15人点过</li>
+                {{dish.orderscount}}人点过</li>
             </ul>
         </div>
     </div>

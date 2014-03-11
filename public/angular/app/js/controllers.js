@@ -23,6 +23,15 @@ angular.module('myApp.controllers', []).
     }
 }
 
+                $scope.if_like = function(dish){
+                    $http.get('sendlove/'+dish.id+'/'+!dish.favorite).success(function(data){
+                        dish.favorite = 1;
+                    }).error(function(){
+                        dish.favorite = 0;
+                    }
+                    );
+                        
+                };
       //$scope.ifDisplay = iArtConfig.orderDisplay();
 
         //$scope.output = testService.label;
