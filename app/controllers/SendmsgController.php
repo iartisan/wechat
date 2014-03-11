@@ -52,7 +52,7 @@ class SendmsgController extends BaseController {
         $count = $this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
         if($count>0)
         {
-            $msg=$this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
+            $msg=$this->contacts->where('of_client','=',$_SESSION['client_id'])->get();
         }
         else
         {
