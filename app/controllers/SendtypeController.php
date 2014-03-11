@@ -27,9 +27,22 @@ class SendtypeController extends BaseController {
     public function getIndex()
     {
         session_start();
+<<<<<<< HEAD
             $fuck = $_SESSION['open_id'];
         $this->clients->only_mark=$_SESSION['open_id'];
         $this->clients->save();
+=======
+        $count = Clients::where('only_mark', '=', $_SESSION['open_id'])->count();
+        if($count==0)
+        {
+            $this->clients->only_mark=$_SESSION['open_id'];
+            $isok=$this->clients->save();
+        }
+        else
+        {
+            Clients::where('only_mark', '=',$_SESSION['open_id'])->update(array('updated_at' => 'now()'));
+        }
+>>>>>>> lihui
         $styles = $this->styles->orderBy('status', 'asc')->get();
         return Response::json($styles)->setCallback(Input::get('callback'));
     }

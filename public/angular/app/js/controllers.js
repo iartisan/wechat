@@ -160,7 +160,26 @@ angular.module('myApp.controllers', []).
       }
   }])
   .controller('DishCtrl', ['$scope','$routeParams','orderService','mymodal',function($scope,$routeParams,$orderService,mymodal) {
-      $scope.dish_id = $routeParams.dishId;
+                $scope.dish_id = $routeParams.dishId;
+                $http.get('sendmsg/'+$scope.dish_id).success(function(data){
+                    for(var i =0; data[i];i++)
+                    data[i].count=0;
+                    $scope.dish = data;
+                    /*
+                if($scope.order.length!=0){
+                    for(var i =0; $scope.order[i]; i++){
+                            for(var j =0; $scope.dishes[j]; j++){
+                                if($scope.order[i].id == $scope.dishes[j].id){
+                                    $scope.dishes[j].count=$scope.order[i].count;
+                                }
+                            }
+                    }
+                }
+                */
+                }).error(function(data,status,header,config){
+                    //错误处理
+
+                });
   }])
   .controller('AddressCtrl', ['$scope','$routeParams','orderService','$http',function($scope,$routeParams,$orderService,$http) {
       $scope.update = function(user){
