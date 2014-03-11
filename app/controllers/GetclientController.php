@@ -7,14 +7,16 @@ class GetclientController extends BaseController {
      * @var Post
      */
     protected $contacts;
+    protected $clients;
     /**
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Contacts $contacts)
+    public function __construct(Contacts $contacts,Clients $clients)
     {
         parent::__construct();
         $this->contacts = $contacts;
+        $this->clients = $clients;
     }
 
     /**
@@ -32,5 +34,6 @@ class GetclientController extends BaseController {
         $this->contacts->of_client=$_SESSION['client_id'];
         $this->contacts->save();
         $_SESSION['contact_id']=$this->contacts->id;
+        DB::table('clients')->where('only_mark',$_SESSION['open_id'])->update(array('of_contact' => $this->contacts->id));
     }
 }
