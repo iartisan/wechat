@@ -38,10 +38,10 @@ class GetmsgController extends BaseController {
         foreach($data as $d)
         {
             $ordersmsgs = new Ordersmsgs;
-            $ordersmsgs->of_foods=$d->id;
+            $ordersmsgs->of_food=$d->id;
             $ordersmsgs->count=$d->count;
             $ordersmsgs->price=$d->price;
-            $ordersmsgs->of_orders=$id;
+            $ordersmsgs->of_order=$id;
             $ordersmsgs->rebate=$d->rebate;
             $ordersmsgs->save();
         }
