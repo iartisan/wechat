@@ -13,13 +13,14 @@ class SendmsgController extends BaseController {
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Post $post,Foods $foods,Clients $clients,Contacts $contacts)
+    public function __construct(Post $post,Foods $foods,Clients $clients,Contacts $contacts,Loves $loves)
     {
         parent::__construct();
         $this->post = $post;
         $this->foods = $foods;
         $this->clients = $clients;
         $this->contacts = $contacts;
+        $this->loves = $loves;
     }
 
     /**
@@ -50,10 +51,11 @@ class SendmsgController extends BaseController {
         $count = $this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
         if($count>0)
         {
-            $id=$this->clients->where('id','=',$_SESSION['client_id'])->lists('of_contact');;
-            if($id!=null)
+            $id=$this->clients->where('id','=',$_SESSION['client_id'])->lists('of_contact');
+            if($id[0]!='null')
             {
-                $msg=$this->contacts->where('id','=',$id)->get();
+                $msg=DB::table('contacts')->where('id','=',$id[0])->get();
+                return Response::json($msg)->setCallback(Input::get('callback'));
             }
             else
             {
@@ -64,6 +66,13 @@ class SendmsgController extends BaseController {
         {
             return "null";
         }
-        return Response::json($msg)->setCallback(Input::get('callback'));
+        
     }
+   public function  getUserlove($id)
+   {
+        session_start();
+        $this->loves->of_foods=$id;
+        $this->loves->of_client=$_SESSION['client_id'];
+        $this->loves->save();
+   }
 }
