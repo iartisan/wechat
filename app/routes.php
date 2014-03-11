@@ -112,6 +112,7 @@ Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
 Route::get('sendone/{id}', 'SendmsgController@getOne');
 Route::get('senduser', 'SendmsgController@getUsermsg');
 Route::get('sendlove/{id}/{status}', 'SendmsgController@getUserlove');
+Route::get('sendmylove', 'SendmsgController@getMylove');
 Route::post('getmsg', 'GetmsgController@getIndex');
 Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
