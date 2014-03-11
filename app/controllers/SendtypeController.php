@@ -37,10 +37,16 @@ class SendtypeController extends BaseController {
         {
             $this->clients->only_mark=$_SESSION['open_id'];
             $isok=$this->clients->save();
+            $id=$this->clients->id;
         }
         else
         {
-            Clients::where('only_mark', '=',$_SESSION['open_id'])->update(array('updated_at' => 'now()'));
+            $this->clients->where('only_mark', '=',$_SESSION['open_id'])->update(array('updated_at' => date('Y-m-d H:i:s')));
+            $sql=$this->clients->where('only_mark', '=',$_SESSION['open_id'])->get();
+            foreach($sql as $s)
+            {
+                $id=$s['id'];
+            } 
         }
 >>>>>>> lihui
         $styles = $this->styles->orderBy('status', 'asc')->get();
