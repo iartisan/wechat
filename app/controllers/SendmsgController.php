@@ -31,15 +31,13 @@ class SendmsgController extends BaseController {
     {
         if($typename=='index')
         {
-             $foods = $this->foods->where('show','=',0)->get();
+            $foods = $this->foods->select(DB::raw('*,(select count(*) from ordersmsgs where of_foods=foods.id) as count'))->where('show','=',0)->get();
         }
         else
         {
-            $foods = $this->foods->where('type','=',$typename)->get();
+            $foods = $this->foods->select(DB::raw('*,(select count(*) from ordersmsgs where of_foods=foods.id) as count'))->where('show','=',0)->where('type','=',$typename)->get();
         }
         return Response::json($foods)->setCallback(Input::get('callback'));
-        // Show the page
-        //return View::make('admin/stores/index', compact('posts', 'title'));
     }
     public function getOne($id)
     {
@@ -52,7 +50,15 @@ class SendmsgController extends BaseController {
         $count = $this->contacts->where('of_client','=',$_SESSION['client_id'])->count();
         if($count>0)
         {
-            $msg=$this->contacts->where('of_client','=',$_SESSION['client_id'])->get();
+            $id=$this->clients->where('id','=',$_SESSION['client_id'])->lists('of_contact');;
+            if($id!=null)
+            {
+                $msg=$this->contacts->where('id','=',$id)->get();
+            }
+            else
+            {
+                return "null";
+            }
         }
         else
         {
