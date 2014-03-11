@@ -110,9 +110,9 @@ Route::controller('user', 'UserController');
 #获取发送数据
 Route::get('sendmsg/{typename}', 'SendmsgController@getIndex');
 Route::get('sendone/{id}', 'SendmsgController@getOne');
+Route::get('senduser', 'SendmsgController@getUsermsg');
 Route::post('getmsg', 'GetmsgController@getIndex');
-Route::post('getclientcontact', 'GetclientcontactController@getIndex');
-Route::post('getclientopenid', 'GetclientopenidController@getIndex');
+Route::post('getclient', 'GetclientController@getIndex');
 Route::controller('sendtype', 'SendtypeController');
 
 //:: Application Routes ::

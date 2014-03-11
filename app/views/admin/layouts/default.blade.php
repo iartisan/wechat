@@ -10,9 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 	<title>
-		@section('title')
-			Administration
-		@show
+			微信后台管理
 	</title>
 
 	<meta name="keywords" content="@yield('keywords')" />

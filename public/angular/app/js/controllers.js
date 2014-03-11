@@ -135,6 +135,11 @@ angular.module('myApp.controllers', []).
       $scope.order = orderService.order;
       $scope.ifOrderEmpty = 'none';
       
+        $http.get('senduser').success(function(data){
+
+        }).error(function(data,status,header,config){
+        });
+
       $scope.addDish = function(dish){
           
             dish.count=orderService.addDish(dish);
@@ -204,6 +209,23 @@ angular.module('myApp.controllers', []).
               //$location.path('/orderSuccess');
           }).error()
       }
+            $http.get('senduser').success(function(data){
+                console.log(data);
+                /*
+            if($scope.order.length!=0){
+                for(var i =0; $scope.order[i]; i++){
+                        for(var j =0; $scope.dishes[j]; j++){
+                            if($scope.order[i].id == $scope.dishes[j].id){
+                                $scope.dishes[j].count=$scope.order[i].count;
+                            }
+                        }
+                }
+            }
+            */
+            }).error(function(data,status,header,config){
+                //错误处理
+
+            });
   }])
   .controller('TestCtrl', [function() {
 
