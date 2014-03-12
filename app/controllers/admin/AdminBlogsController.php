@@ -222,12 +222,12 @@ class AdminBlogsController extends AdminController {
     public function getData()
     {
         //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price', 'foods.content','foods.rebate as ownername','foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","1");
+        $posts = Foods::select(array('foods.id', 'foods.name','foods.type', 'foods.price','foods.rebate as ownername','foods.status','foods.tag','foods.times','foods.created_at'))->where("show","=","1");
         return Datatables::of($posts)
         ->edit_column('foods', '{{ DB::table(\'foods\')->where(\'id\', \'=\', $id)->count() }}')
-        ->add_column('图片','<img class="iframe" src="../img/{{{$id  }}}.jpg" width=50 height=50 />')
+        //->add_column('图片','<img class="iframe" src="../img/{{{$id  }}}.jpg" width=50 height=50 />')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/blogs/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
-                <a href="{{{ URL::to(\'admin/blogs/\' . $id . \'/delete\' ) }}}" class="btn btn-xs btn-danger iframe">删除</a>
+                <a href="{{{ URL::to(\'admin/blogs/\' . $id . \'/delete\' ) }}}" class="btn btn-default btn-xs iframe">删除</a>
             ')
         ->edit_column('ownername','{{ $ownername/10 }}')
         ->remove_column('id')

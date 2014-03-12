@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="zh-CN">
 
-<head id="Starter-Site">
+<head>
 
 	<meta charset="UTF-8">
 
@@ -76,38 +76,21 @@
 
 <body>
 	<!-- Container -->
-	<div class="container">
-		<!-- Navbar -->
-		<div class="navbar navbar-default navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-    			<div class="collapse navbar-collapse navbar-ex1-collapse">
-    				<ul class="nav navbar-nav">
-    					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> 欢迎页</a></li>
-    					<li{{ (Request::is('admin/styles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/styles') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 分类管理</a></li>
-    					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-    					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> 餐品管理</a></li>
-    					<li{{ (Request::is('admin/stores*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/stores') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 门店管理</a></li>
-						<li{{ (Request::is('admin/orders*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/orders') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 订单管理</a></li>
-    					<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
-    						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
-    							<span class="glyphicon glyphicon-user"></span> 用户管理 <span class="caret"></span>
-    						</a>
-    						<ul class="dropdown-menu">
-    							<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> 用户列表</a></li>
-    							<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> 权限管理</a></li>
-    						</ul>
-    					</li>
-    				</ul>
-    				<ul class="nav navbar-nav pull-right">
-    					<!--li><a href="{{{ URL::to('/') }}}">View Homepage</a></li-->
+	<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="{{URL::to('admin')}}" class="navbar-brand">微信餐饮</a>
+   
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <!--li><a href="{{{ URL::to('/') }}}">View Homepage</a></li-->
     					<li class="divider-vertical"></li>
     					<li class="dropdown">
     							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -119,19 +102,44 @@
     								<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span>登出</a></li>
     							</ul>
     					</li>
+      </ul>
+    </nav>
+  </div>
+</header>
+		
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+				<ul class="nav nav-pills nav-stacked">
+    					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> 欢迎页</a></li>
+    					<li{{ (Request::is('admin/styles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/styles') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 分类管理</a></li>
+    					<li{{ (Request::is('admin/blogs*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/blogs') }}}"><span class="glyphicon glyphicon-list-alt"></span> 餐品管理</a></li>
+    					<li{{ (Request::is('admin/stores*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/stores') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 门店管理</a></li>
+						<li{{ (Request::is('admin/orders*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/orders') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 订单管理</a></li>
+    					<!--<li class="dropdown{{ (Request::is('admin/users*|admin/roles*') ? ' active' : '') }}">
+    						<a class="dropdown-toggle" data-toggle="dropdown" href="{{{ URL::to('admin/users') }}}">
+    							<span class="glyphicon glyphicon-user"></span> 用户管理 <span class="caret"></span>
+    						</a>
+    						<ul class="dropdown-menu">
+    							<li{{ (Request::is('admin/users*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/users') }}}"><span class="glyphicon glyphicon-user"></span> 用户列表</a></li>
+    							<li{{ (Request::is('admin/roles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/roles') }}}"><span class="glyphicon glyphicon-user"></span> 权限管理</a></li>
+    						</ul>
+    					</li>-->
     				</ul>
-    			</div>
-            </div>
-		</div>
-		<!-- ./ navbar -->
-
-		<!-- Notifications -->
+			</div>
+			<div class="col-md-10">
+					<!-- Notifications -->
 		@include('notifications')
 		<!-- ./ notifications -->
 
 		<!-- Content -->
 		@yield('content')
-		<!-- ./ content -->
+		<!-- ./ content -->	
+			</div>
+		</div>
+
+	
 
 		<!-- Footer -->
 		<footer class="clearfix">

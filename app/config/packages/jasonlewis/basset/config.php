@@ -32,7 +32,8 @@ return array(
         {
             $collection->directory('assets/css', function($collection)
             {
-                $collection->add('less/master.less')->apply('Less');
+                //$collection->add('less/master.less')->apply('Less');
+                $collection->add('bootstrap.css');
             })->apply('UriRewriteFilter')->apply('CssMin');
 
             $collection->directory('assets/js', function($collection)
@@ -47,7 +48,10 @@ return array(
         {
             $collection->directory('assets/css', function($collection)
             {
-                $collection->add('less/master.less')->apply('Less');
+                //$collection->add('less/master.less')->apply('Less');
+                                $collection->add('bootstrap3.css');
+
+                $collection->add('bootstrap-theme.css');
                 $collection->add('wysihtml5/prettify.css');
                 $collection->add('wysihtml5/bootstrap-wysihtml5.css');
                 $collection->add('datatables-bootstrap.css');
