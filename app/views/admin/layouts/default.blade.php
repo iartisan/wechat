@@ -107,14 +107,14 @@
     					</li>
     				</ul>
     				<ul class="nav navbar-nav pull-right">
-    					<!--li><a href="{{{ URL::to('/') }}}">View Homepage</a></li-->
+    					<!--li><a href="{{{ URL::to('/') }}}">返回</a></li-->
     					<li class="divider-vertical"></li>
     					<li class="dropdown">
     							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
     								<span class="glyphicon glyphicon-user"></span> {{{ Auth::user()->username }}}	<span class="caret"></span>
     							</a>
     							<ul class="dropdown-menu">
-    								<!--li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span> Settings</a></li-->
+    								<!--li><a href="{{{ URL::to('user/settings') }}}"><span class="glyphicon glyphicon-wrench"></span>设置</a></li-->
     								<li class="divider"></li>
     								<li><a href="{{{ URL::to('user/logout') }}}"><span class="glyphicon glyphicon-share"></span>登出</a></li>
     							</ul>

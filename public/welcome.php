@@ -19,7 +19,6 @@
 <body ng-controller="bodyCtrl">
     <div class="container view-animate" ng-view>
         <div id="logo-container-wrapper">
-
            <div class="logo-container">
                         <div id="welcome-logo">
                             <h1>
@@ -32,7 +31,6 @@
         </div>
     </div>
     <div id="footer-container" ng-include="'footer.html'" ng-controller="footerCtrl">
-
     </div>
     <script src="index.js"></script>
     <link rel="stylesheet" href="minified/collections/menu.min.css" media="all">
