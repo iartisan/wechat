@@ -110,7 +110,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-sm-3">
 				<ul class="nav nav-pills nav-stacked">
     					<li{{ (Request::is('admin') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin') }}}"><span class="glyphicon glyphicon-home"></span> 欢迎页</a></li>
     					<li{{ (Request::is('admin/styles*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/styles') }}}"><span class="glyphicon glyphicon-bullhorn"></span> 分类管理</a></li>
@@ -128,7 +128,7 @@
     					</li>-->
     				</ul>
 			</div>
-			<div class="col-md-10">
+			<div class="col-sm-9">
 					<!-- Notifications -->
 		@include('notifications')
 		<!-- ./ notifications -->
