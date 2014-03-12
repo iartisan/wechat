@@ -3,7 +3,7 @@ $.extend( true, $.fn.dataTable.defaults, {
 	"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
 	"sPaginationType": "bootstrap",
 	"oLanguage": {
-		"sLengthMenu": "_MENU_ records per page"
+		"sLengthMenu": "_MENU_ "
 	}
 } );
 
@@ -43,6 +43,7 @@ $.extend( $.fn.dataTableExt.oPagination, {
 				}
 			};
 
+			
 			$(nPaging).append(
 				'<ul class="pagination">'+
 					'<li class="prev disabled"><a href="#">&larr; '+oLang.sPrevious+'</a></li>'+

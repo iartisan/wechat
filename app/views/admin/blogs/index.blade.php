@@ -10,15 +10,15 @@
 @section('description')Blogs administration index @stop
 
 {{-- Content --}}
-@section('content')
-	<div class="page-header">
-		<h3>
+@section('header')
+		<h3 class="header smaller lighter blue">
 			餐品管理
+		</h3>
 			<div class="pull-right">
 				<a href="{{{ URL::to('admin/blogs/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 创建</a>
 			</div>
-		</h3>
-	</div>
+@stop
+@section('content')
 
 	<table id="blogs" class="table table-striped table-hover">
 		<thead>
@@ -26,13 +26,11 @@
 				<th class="col-md-1">名称</th>
 				<th class="col-md-1">类型</th>
 				<th class="col-md-1">价格</th>
-				<th class="col-md-1">详情介绍</th>
 				<th class="col-md-1">会员折扣</th>
 				<th class="col-md-1">状态</th>
 				<th class="col-md-1">标签</th>
 				<th class="col-md-1">所需时间</th>
-				<th class="col-md-1">发布时间</th>
-				<th class="col-md-1">图片</th>
+				<th class="col-md-2">发布时间</th>
 				<th class="col-md-1">操作</th>
 			</tr>
 		</thead>
@@ -47,10 +45,18 @@
 		var oTable;
 		$(document).ready(function() {
 			oTable = $('#blogs').dataTable( {
-				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
-				"sPaginationType": "bootstrap",
+								"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
+
+	"sPaginationType": "bootstrap",
 				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
+					"sLengthMenu": "_MENU_",
+					"sInfo":"",
+					"oPaginate": {
+							"sPrevious":"上一页",
+					        "sNext": "下一页"
+			         },
+			         "sSearch":"搜索"
+
 				},
 				"bProcessing": true,
 		        "bServerSide": true,

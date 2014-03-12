@@ -44,7 +44,14 @@
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
 				"oLanguage": {
-					"sLengthMenu": "_MENU_ records per page"
+					"sLengthMenu": "_MENU_",
+					"sInfo":"",
+					"oPaginate": {
+							"sPrevious":"上一页",
+					        "sNext": "下一页"
+			         },
+			         "sSearch":"搜索"
+
 				},
 				"bProcessing": true,
 		        "bServerSide": true,

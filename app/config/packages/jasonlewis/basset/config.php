@@ -32,7 +32,8 @@ return array(
         {
             $collection->directory('assets/css', function($collection)
             {
-                $collection->add('less/master.less')->apply('Less');
+                //$collection->add('less/master.less')->apply('Less');
+                $collection->add('bootstrap.css');
             })->apply('UriRewriteFilter')->apply('CssMin');
 
             $collection->directory('assets/js', function($collection)
@@ -47,18 +48,24 @@ return array(
         {
             $collection->directory('assets/css', function($collection)
             {
-                $collection->add('less/master.less')->apply('Less');
+                //$collection->add('less/master.less')->apply('Less');
+                $collection->add('bootstrap3.css');
+                $collection->add('font-awesome.min.css');
+                $collection->add('ace.min.css');
+                $collection->add('ace-rtl.min.css');
+                $collection->add('ace-skins.min.css');
                 $collection->add('wysihtml5/prettify.css');
                 $collection->add('wysihtml5/bootstrap-wysihtml5.css');
-                $collection->add('datatables-bootstrap.css');
+//                $collection->add('datatables-bootstrap.css');
                 $collection->add('colorbox.css');
             })->apply('UriRewriteFilter')->apply('CssMin');
 
             $collection->directory('assets/js', function($collection)
             {
-                $collection->javascript('http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js');
-                $collection->add('bootstrap/bootstrap.js');
-                $collection->requireDirectory('../../../../vendor/twbs/bootstrap/js');
+                //$collection->javascript('http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js');
+                $collection->add('ace/bootstrap.min.js');
+                $collection->add('ace/typeahead-bs2.min.js');
+                //$collection->requireDirectory('../../../../vendor/twbs/bootstrap/js');
                 $collection->add('wysihtml5/wysihtml5-0.3.0.js');
                 $collection->add('wysihtml5/bootstrap-wysihtml5.js');
                 $collection->javascript('http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js');
