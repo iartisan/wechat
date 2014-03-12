@@ -23,15 +23,6 @@ angular.module('myApp.controllers', []).
     }
 }
 
-                $scope.if_like = function(dish){
-                    $http.get('sendlove/'+dish.id+'/'+!dish.favorite).success(function(data){
-                        dish.favorite = 1;
-                    }).error(function(){
-                        dish.favorite = 0;
-                    }
-                    );
-                        
-                };
       //$scope.ifDisplay = iArtConfig.orderDisplay();
 
         //$scope.output = testService.label;
@@ -43,13 +34,14 @@ angular.module('myApp.controllers', []).
                 $http.get('sendmsg/index').success(function(data){
                     for(var i =0; data[i];i++)
                     {
-                    data[i].count=0;
-                    if(data[i].loves==null&&data[i].loves==0){
-                        data[i].favorite=false;
-                    }else if(data[i].loves == 1){
-                        data[i].favorite=true;
+                        data[i].count=0;
+                        if(data[i].loves==null&&data[i].loves==0){
+                            data[i].favorite=false;
+                        }else if(data[i].loves == 1){
+                            data[i].favorite=true;
+                        }
                     }
-                    }
+
                     $scope.dishes = data;
                 if($scope.order.length!=0){
                     for(var i =0; $scope.order[i]; i++){
@@ -84,6 +76,13 @@ angular.module('myApp.controllers', []).
                 });
         }
 
+        $scope.if_like=function(dish){
+                    $scope.dish=$http.get('sendlove/'+dish.id+'/'+!dish.favorite).success(function(data){
+                        dish.favorite = !dish.favorite;
+                        return dish;
+                    }).error(function(){
+                    })
+        };
       //作用域真的要了解一下了
       //console.log($scope.dishes);
 
@@ -205,9 +204,8 @@ angular.module('myApp.controllers', []).
 
                 $scope.if_like = function(dish){
                     $http.get('sendlove/'+dish.id+'/'+!dish.favorite).success(function(data){
-                        dish.favorite = 1;
+                        dish.favorite = !dish.favorite;
                     }).error(function(){
-                        dish.favorite = 0;
                     }
                     );
                         
