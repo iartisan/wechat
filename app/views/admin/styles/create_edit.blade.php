@@ -35,9 +35,8 @@
 		<!-- Form Actions -->
 		<div class="form-group">
 			<div class="col-md-12">
-				<element class="btn-cancel close_popup">取消</element>
-				<button type="reset" class="btn btn-default">重置</button>
-				<button type="submit" class="btn btn-success">更新</button>
+				<button type="reset" class="btn btn-default btn-xs iframe">重置</button>
+				<button type="submit" class="btn btn-default btn-xs iframe">更新</button>
 			</div>
 		</div>
 		<!-- ./ form actions -->

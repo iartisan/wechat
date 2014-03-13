@@ -27,9 +27,12 @@ angular.module('myApp.controllers', []).
 
         //$scope.output = testService.label;
 
-                    $http.get('sendtype').success(function(data){
-                        $scope.categories = data;
-                    });
+        $http.get('sendtype').success(function(data){
+            $scope.categories = data;
+        });
+        $http.get('sendmylove').success(function(data){
+            $scope.categories = data;
+        });
         if($routeParams.name == 'index'){
                 $http.get('sendmsg/index').success(function(data){
                     for(var i =0; data[i];i++)

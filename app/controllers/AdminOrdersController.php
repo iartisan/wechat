@@ -41,7 +41,7 @@ class AdminOrdersController extends AdminController {
         return Datatables::of($posts)
        // ->edit_column('contactsname', '{{ DB::table(\'contacts\')->where(\'id\', \'=\', $of_contact)->count() }}')
         ->edit_column('orders', '{{ DB::table(\'orders\')->where(\'id\', \'=\', $id)->count() }}')
-        ->edit_column('id','VG{{{$id}}}')
+        //->edit_column('id','VG{{{$id}}}')
         ->make();
     }
 }

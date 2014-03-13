@@ -44,9 +44,9 @@ class AdminStylesController extends AdminController {
         return Datatables::of($posts)
         //->edit_column('comments', '{{ DB::table(\'comments\')->where(\'post_id\', \'=\', $id)->count() }}')
         ->edit_column('styles', '{{ DB::table(\'styles\')->where(\'id\', \'=\', $id)->count() }}')
-        ->edit_column('status', '<input class="btn btn-default" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default" type="button" value="下移">')
+        ->edit_column('status', '<input class="btn btn-default btn-xs iframe" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default btn-xs iframe" type="button" value="下移">')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/styles/edit/\' . $id  ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
-                <a href="{{{ URL::to(\'admin/styles/delete/\' . $id) }}}" class="btn btn-xs btn-danger iframe">删除</a>
+                <a href="{{{ URL::to(\'admin/styles/delete/\' . $id) }}}" class="btn btn-default btn-xs iframe">删除</a>
             ')
         ->remove_column('id')
         ->make();
@@ -54,7 +54,7 @@ class AdminStylesController extends AdminController {
     public function getCreate()
     {
         // Title
-        $title = Lang::get('admin/blogs/title.create_a_new_blog');
+        $title = Lang::get('创建菜单类型');
 
         // Show the page
         return View::make('admin/styles/create_edit', compact('title'));
@@ -63,7 +63,7 @@ class AdminStylesController extends AdminController {
     {
         $styles = $this->styles->find($id);
         
-        $title = Lang::get('');
+        $title = Lang::get('菜单类型更新');
         // Show the page
         return View::make('admin/styles/create_edit', compact('styles', 'title'));
     }
