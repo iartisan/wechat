@@ -62,7 +62,7 @@
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('admin/orders/data') }}",
 		        "fnDrawCallback": function ( oSettings ) {
-	           		$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+	           		$(".iframe").colorbox({iframe:true, width:"50%", height:"50%"});
 	     		}
 			});
 		});
