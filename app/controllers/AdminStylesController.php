@@ -44,7 +44,7 @@ class AdminStylesController extends AdminController {
         return Datatables::of($posts)
         //->edit_column('comments', '{{ DB::table(\'comments\')->where(\'post_id\', \'=\', $id)->count() }}')
         ->edit_column('styles', '{{ DB::table(\'styles\')->where(\'id\', \'=\', $id)->count() }}')
-        ->edit_column('status', '<input class="btn btn-default btn-xs iframe" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default btn-xs iframe" type="button" value="下移">')
+        ->edit_column('status', '<input class="btn btn-default btn-xs" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default btn-xs" type="button" value="下移">')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/styles/edit/\' . $id  ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
                 <a href="{{{ URL::to(\'admin/styles/delete/\' . $id) }}}" class="btn btn-default btn-xs iframe">删除</a>
             ')
