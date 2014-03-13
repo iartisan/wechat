@@ -154,6 +154,7 @@ angular.module('myApp.controllers', []).
       
         $http.get('senduser').success(function(data){
             $scope.address=data[0];
+            orderService.username = $scope.address.name;
         }).error(function(data,status,header,config){
         });
 
@@ -227,6 +228,17 @@ angular.module('myApp.controllers', []).
           $http.post('getclient',$scope.customer).success(function(data,status,headers,config){
               $location.path('/order');
           }).error()
+          orderService.username = $scope.customer.name;
+      }
+  }])
+  .controller('OrderSCtrl', ['$scope','$routeParams','orderService','$http','$location',function($scope,$routeParams,orderService,$http,$location) {
+      if(orderService.order.length>0){
+      $scope.order=orderService.order;
+      $scope.totalcount=orderService.totalcount;
+      $scope.totalprice=orderService.totalprice;
+      $scope.username = orderService.username;
+      }else{
+          $location.path('/menu/index');
       }
   }])
   .controller('TestCtrl', [function() {

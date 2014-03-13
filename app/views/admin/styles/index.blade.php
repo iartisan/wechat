@@ -40,6 +40,7 @@
 		var oTable;
 		$(document).ready(function() {
 			oTable = $('#blogs').dataTable( {
+                "bSort":false,
 				"aaSorting": [[ 1, "asc" ]],
 				"sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
 				"sPaginationType": "bootstrap",
@@ -113,7 +114,7 @@
 		}
 		function update_ok(text)
 		{
-			window.location.reload();
+			//window.location.reload();
 		}
 	</script>
 @stop

@@ -91,7 +91,7 @@ text-align: center;
     }
 
     .order-element{
-        width: 30%;
+        width: 1%;
     }
     #orderconfirm{
         background-color: #DCE6F2;
@@ -99,7 +99,12 @@ text-align: center;
 
     .totalOrder{
         height: 30%;
+		width:100%;
     }
+	.iArt-button
+	{
+		width:35% !important;
+	}
 </style>
 <div id="orderconfirm">
 <div class="header">
@@ -147,7 +152,7 @@ text-align: center;
         
         <button class="iArt-button" ng-click="pushOrder()" ng-show="address!='n'">提交</button>
         <a class="iArt-button" href="#/address" ng-show="address=='n'">填写地址</a>
-        <a class="iArt-button" href="#/menu">继续选择</a>
+        <button class="iArt-button" href="#/menu">继续选择</button>
     </div>
 </div>
 </div>

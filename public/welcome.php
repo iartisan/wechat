@@ -32,12 +32,17 @@
             </div>
         </div>
     </div>
-    <div id="footer-container" ng-include="'footer.html'" ng-controller="footerCtrl">
+    <div id="footer-container" ng-include="'part/footer.html'" ng-controller="footerCtrl">
     </div>
     <script src="index.js"></script>
     <link rel="stylesheet" href="minified/collections/menu.min.css" media="all">
     <link rel="stylesheet" href="minified/elements/label.min.css" media="all">
     <link rel="stylesheet" href="minified/elements/icon.min.css" media="all">
     <link rel="stylesheet" href="minified/views/item.min.css" media="all">
+<script>
+   function end(){
+        window.close();
+    }
+</script>
 </body>
 </html>

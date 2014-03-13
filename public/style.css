@@ -74,6 +74,7 @@ html,body{
     height: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-user-select: none;
+	font-family:'微软雅黑';
 }
 
 .container{
@@ -108,7 +109,7 @@ button.iart{
     color:#fff;
     border-radius:3px;
     font-size:16px;
-	width:25px;
+	width:28px;
 }
 
 span.iart{
@@ -116,7 +117,7 @@ span.iart{
     border:0px;
     color:#fff;
     font-size:18px;
-    padding: 0px 3px;
+    padding: 0px 10px;
     margin: 0px 2px;
     text-align:center;
 }
@@ -140,7 +141,7 @@ button.iArt-button{
 }
 /*场景切换*/
 .view-animate{
-    padding: 10px;
+ 
 }
 .view-animate.ng-enter, .view-animate.ng-leave {
     -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
@@ -153,7 +154,7 @@ button.iArt-button{
     right: 0;
     bottome:0;
     top:0;
-    padding: 10px;
+
 }
 
 .view-animate.ng-enter {
@@ -363,3 +364,16 @@ border-radius: 5px;
 }
   
 */
+/* 新加样式 */
+a
+{
+	text-decoration:none;
+	color:#7D7D7D;
+}
+
+
+ul.ui.small.fluid.vertical.menu a.item.active{
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background-color:#FED702;
+}

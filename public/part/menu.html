@@ -1,3 +1,62 @@
+<style>
+.msg
+{
+	background:#D9D4BC;
+	height:80%;
+	width:90%;
+	position:absolute;
+	top:0px;
+}
+.all_msg
+{
+	width:93%;
+	margin:0px auto;
+}
+.ui.corner.label
+{
+	top:80% !important;
+	
+}
+.ui.corner.label:after
+{
+	border:0px !important;
+}
+.orders_show
+{
+	position:absolute !important;
+	top:0px !important;
+	left:30%;
+	width:70%;
+	text-align:center;
+	background:#B90000 !important;
+	padding-left:0px;
+	height:25%;
+	line-height:25%;
+	border-radius:3px;
+	font-size:12px;
+	color:white;
+}
+.in_orders
+{
+	padding:2px;
+}
+.ng-binding
+{
+	margin:0px !important;
+}
+.descriptiion
+{
+	margin:1% !important;
+}
+.ng-binding 
+{
+	margin-top:10% !important;
+}
+.item
+{
+	position:relative;
+}
+</style>
 <div id="sidebar" ng-iscroll="sidebarScroll" ng-iscroll-delay="50">
     <div class="scroller">
             <ul id="categories" class="ui small fluid vertical menu">
@@ -35,12 +94,9 @@
                             <a ng-click="dish.favorite=if_like(dish)" class="heart ui corner label">
                                 <i class="heart  icon"  ng-show="dish.favorite"></i>
                                 <i class="heart  empty icon"  ng-show="!dish.favorite"></i>
-                            </a>
-                            <div class="ui ribbon label" >
-      {{dish.count}}人已点
-  </div>
-                            
+                            </a>            
                         </div>
+						 <div class="orders_show" ><div class="in_orders">点过{{dish.count}}次</div></div>
                         <div class="content">
                             <div class="name">
             <a href="#/dish/{{dish.id}}">
@@ -50,15 +106,17 @@
                         </div>
                     </div>
                     <div class="item">
-                        <div class="content">
-                            <p>{{dish.price}}元 会员{{dish.rebate}}折</p>
-                            <p class="descriptiion">
-                            <button class="iart" ng-click="addDish(dish)">+</button>
-                            <span class="iart">{{dish.count}}</span>
-                            <button class="iart" ng-click="subDish(dish)" >-</button>
-                            </p>
-                            <p>{{dish.snippet}}</p>
-                        </div>
+                        <div class="msg">
+							<div class="all_msg">
+                           	  	<p>{{dish.price}}元 会员{{dish.rebate}}折</p>
+                            	<p class="descriptiion">
+                            	<button class="iart" ng-click="addDish(dish)">+</button>
+                            	<span class="iart">{{dish.count}}</span>
+                            	<button class="iart" ng-click="subDish(dish)" >-</button>
+                            	</p>
+                            	<p>{{dish.snippet}}</p>
+                        	</div>
+						</div>
                     </div>
                 </div>
             </li>
