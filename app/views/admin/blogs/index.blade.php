@@ -10,13 +10,14 @@
 @section('description')Blogs administration index @stop
 
 {{-- Content --}}
-@section('header')
-		<h3 class="header smaller lighter blue">
-			餐品管理
-		</h3>
-			<div class="pull-right">
-				<a href="{{{ URL::to('admin/blogs/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 创建</a>
-			</div>
+@section('breadcrumbs')
+<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">主页</a>
+							</li>
+							<li class="active">餐品管理</li>
+						</ul>
 @stop
 @section('content')
 
@@ -37,6 +38,9 @@
 		<tbody>
 		</tbody>
 	</table>
+	<div class="pull-right">
+				<a href="{{{ URL::to('admin/blogs/create') }}}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> 创建</a>
+	</div>
 @stop
 
 {{-- Scripts --}}

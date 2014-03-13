@@ -100,3 +100,9 @@ App::down(function()
 */
 
 require __DIR__.'/../filters.php';
+
+View::composer('admin.layouts.sidebar', function($view) {
+
+    
+    $view->with('links', ['hello','world!']);
+});
