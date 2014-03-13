@@ -1,60 +1,156 @@
-@extends('site.layouts.default')
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>微信餐饮系统 - 微格无线</title>
 
-{{-- Web site Title --}}
-@section('title')
-{{{ Lang::get('user/user.login') }}} ::
-@parent
-@stop
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-{{-- Content --}}
-@section('content')
-<div class="page-header">
-	<h1>Login into your account</h1>
-</div>
-<form class="form-horizontal" method="POST" action="{{ URL::to('user/login') }}" accept-charset="UTF-8">
+		<!-- basic styles -->
+
+		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<!-- fonts -->
+
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="assets/css/ace.min.css" />
+		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="login-layout">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="icon-leaf green"></i>
+									<span class="red">微信餐饮</span>
+									<span class="white">管理系统</span>
+								</h1>
+								<h4 class="blue">&copy; 微格无线</h4>
+							</div>
+
+							<div class="space-6"></div>
+
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												<i class="icon-coffee green"></i>
+                                                测试版本，小心触雷
+											</h4>
+
+											<div class="space-6"></div>
+
+<form  method="POST" action="{{ URL::to('user/login') }}" accept-charset="UTF-8">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-    <fieldset>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="email">{{ Lang::get('confide::confide.username_e_mail') }}</label>
-            <div class="col-md-10">
-                <input class="form-control" tabindex="1" placeholder="{{ Lang::get('confide::confide.username_e_mail') }}" type="text" name="email" id="email" value="{{ Input::old('email') }}">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="password">
-                {{ Lang::get('confide::confide.password') }}
-            </label>
-            <div class="col-md-10">
-                <input class="form-control" tabindex="2" placeholder="{{ Lang::get('confide::confide.password') }}" type="password" name="password" id="password">
-            </div>
-        </div>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="Username" name="email" id="email" value="{{ Input::old('email') }}"/>
+															<i class="icon-user"></i>
+														</span>
+													</label>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <label for="remember">{{ Lang::get('confide::confide.login.remember') }}
-                        <input type="hidden" name="remember" value="0">
-                        <input tabindex="4" type="checkbox" name="remember" id="remember" value="1">
-                    </label>
-                </div>
-            </div>
-        </div>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Password"  name="password" id="password"/>
+															<i class="icon-lock"></i>
+														</span>
+													</label>
 
-        @if ( Session::get('error') )
-        <div class="alert alert-danger">{{ Session::get('error') }}</div>
-        @endif
+													<div class="space"></div>
 
-        @if ( Session::get('notice') )
-        <div class="alert">{{ Session::get('notice') }}</div>
-        @endif
+													<div class="clearfix">
+														<label class="inline">
+															<input type="checkbox" name="remember" id="remember" value="1" class="ace" />
+															<span class="lbl"> 记住我</span>
+														</label>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button tabindex="3" type="submit" class="btn btn-primary">{{ Lang::get('confide::confide.login.submit') }}</button>
-                <a class="btn btn-default" href="forgot">{{ Lang::get('confide::confide.login.forgot_password') }}</a>
-            </div>
-        </div>
-    </fieldset>
-</form>
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>
+                                                            登入
+														</button>
+													</div>
 
-@stop
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+
+								</div><!-- /login-box -->
+
+							</div><!-- /position-relative -->
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<![endif]-->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- inline scripts related to this page -->
+
+		<script type="text/javascript">
+			function show_box(id) {
+			 jQuery('.widget-box.visible').removeClass('visible');
+			 jQuery('#'+id).addClass('visible');
+			}
+		</script>
+	</body>
+</html>
