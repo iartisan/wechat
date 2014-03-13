@@ -7,13 +7,18 @@
 @section('description')Blogs administration index @stop
 
 {{-- Content --}}
+@section('breadcrumbs')
+<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">主页</a>
+							</li>
+							<li class="active">订单管理</li>
+						</ul>
+@stop
 @section('content')
-	<div class="page-header">
-		<h3>
-			订单管理
-		</h3>
-	</div>
-	<button type="button" class="btn btn-info"><a href="../export.php" target="_blank">导出为excel</a></button>
+	
+	
 	<table id="blogs" class="table table-striped table-hover">
 		<thead>
 			<tr>
@@ -31,6 +36,7 @@
 		<tbody>
 		</tbody>
 	</table>
+	<button type="button" class="btn btn-info"><a href="../export.php" target="_blank">导出为excel</a></button>
 @stop
 
 {{-- Scripts --}}

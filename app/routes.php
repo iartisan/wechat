@@ -84,6 +84,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
 
     # Orders Role Management
     Route::get('orders/info/{id}','AdminOrdersController@getInfo');
+    Route::get('orders/infos/{id}','AdminOrdersController@getInfos');
     Route::controller('orders', 'AdminOrdersController');
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
