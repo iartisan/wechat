@@ -125,7 +125,7 @@ class AdminStoresController extends AdminController {
         ->edit_column('stores', '{{ DB::table(\'stores\')->where(\'id\', \'=\', $id)->count() }}')
         ->add_column('图片','<img class="iframe" src="../storesimg/{{{$id  }}}.jpg" width=50 height=50 />')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/stores/\' . $id . \'/edit\' ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
-                <a href="{{{ URL::to(\'admin/stores/delete/\' . $id) }}}" class="btn btn-xs btn-danger iframe">删除</a>
+                <a href="{{{ URL::to(\'admin/stores/delete/\' . $id) }}}" class="btn btn-default btn-xs iframe">删除</a>
             ')
 
 

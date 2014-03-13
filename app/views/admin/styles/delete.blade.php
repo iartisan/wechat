@@ -20,9 +20,8 @@
         <!-- Form Actions -->
         <div class="control-group">
             <div class="controls">
-                Delete Post
-                <element class="btn-cancel close_popup">Cancel</element>
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <element class="btn-cancel close_popup" id="">取消</element>
+                <button type="submit" class="btn btn-default btn-xs iframe">删除</button>
             </div>
         </div>
         <!-- ./ form actions -->

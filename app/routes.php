@@ -83,6 +83,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('roles', 'AdminRolesController');
 
     # Orders Role Management
+    Route::get('orders/info/{id}','AdminOrdersController@getInfo');
     Route::controller('orders', 'AdminOrdersController');
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');

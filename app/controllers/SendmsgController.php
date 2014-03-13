@@ -45,7 +45,7 @@ class SendmsgController extends BaseController {
     }
     public function getOne($id)
     {
-        $foods = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id and status=1) as love_count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from ordersmsgs where of_food=foods.id) as orderscount"))->where('id','=',$id)->get();
+        $foods = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id and status=1) as love_count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select sum(count) from ordersmsgs where of_food=foods.id) as orderscount"))->where('id','=',$id)->get();
         return Response::json($foods)->setCallback(Input::get('callback'));
     }
     public function getUsermsg()
@@ -102,10 +102,10 @@ class SendmsgController extends BaseController {
         }
         else
         {
-            //$msg=DB::table('loves')->leftJoin('foods', 'foods.id', '=', 'loves.of_food')->join('ordersmsgs', 'ordersmsgs.of_food', '=', 'foods.id')->get();
-            //$msg=DB::table('loves')->leftJoin('foods', 'foods.id', '=', 'loves.of_food')->get();
-           //$msg = $this->foods->select(DB::raw("foods.name,(select count(*) from ordersmsgs where of_food=foods.id) as count from loves inner join foods inner join ordersmsgs where loves.of_food=foods.id and loves.status=1 and loves.of_client=4"))->groupBy('loves.id')->get();
+            $msg = $this->foods->select(DB::raw("*,(select count(*) from loves where of_food=foods.id and status=1) as love_count,(select sum(count) from ordersmsgs where of_food=foods.id) as orderscount"))
+            ->join('loves', 'of_food', '=', 'foods.id')->where('loves.status','=','1')->where('loves.of_client','=',$_SESSION['client_id'])->get();
         }
-        return Response::json($msg)->setCallback(Input::get('callback'));
+       
+       return Response::json($msg)->setCallback(Input::get('callback'));
    }
 }

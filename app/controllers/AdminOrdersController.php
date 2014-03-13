@@ -35,13 +35,17 @@ class AdminOrdersController extends AdminController {
     }
     public function getData()
     {
-        $posts=Orders::leftjoin('contacts','orders.of_contact','=','contacts.id')->select(array('orders.id','orders.created_at', 'contacts.name as contactsname','contacts.address as address','contacts.phone as phone','orders.pay','orders.remark'));
-        //$posts = Post::select(array('posts.id', 'posts.title', 'posts.id as comments', 'posts.created_at'));
-        //$posts = Orders::select(array('orders.id','orders.created_at', 'contacts.name','contacts.address','contacts.phone','orders.rebate','orders.pay','orders.remark'));
+        $posts=Orders::leftjoin('contacts','orders.of_contact','=','contacts.id')->select(array('orders.id','orders.updated_at','orders.created_at', 'contacts.name as contactsname','contacts.address as address','contacts.phone as phone','orders.pay','orders.remark'));
         return Datatables::of($posts)
-       // ->edit_column('contactsname', '{{ DB::table(\'contacts\')->where(\'id\', \'=\', $of_contact)->count() }}')
-        ->edit_column('orders', '{{ DB::table(\'orders\')->where(\'id\', \'=\', $id)->count() }}')
+       // ->edit_column('orders','{{ DB::table(\'orders\')->where(\'id\', \'=\', $id)->get() }}')
+        ->edit_column('updated_at','{{ implode(\',\',DB::table(\'foods\')->join(\'ordersmsgs\',\'foods.id\',\'=\',\'ordersmsgs.of_food\')->where(\'of_order\', \'=\', $id)->lists(\'name\')) }}')
+        ->add_column('infomation','<a href="{{{URL::to(\'admin/orders/info/\'.$id)}}}" class="btn btn-default btn-xs iframe">详情</a>')
         ->edit_column('id','VG{{{$id}}}')
         ->make();
+    }
+
+    public function getInfo($id){
+        //$orders_food = Ordersmsgs::('')
+        return "订单详情";
     }
 }
