@@ -26,9 +26,10 @@
 				<th class="col-md-1">下单时间</th>
 				<th class="col-md-1">顾客名</th>
 				<th class="col-md-1">地址名</th>
+				<th class="col-md-1">菜单</th>
 				<th class="col-md-1">费用</th>
-				<th class="col-md-1">支付状态</th>
 				<th class="col-md-1">手机号码</th>
+				<th class="col-md-1">支付状态</th>
 				<th class="col-md-1">备注</th>
 				<th class="col-md-1">详情</th>
 			</tr>

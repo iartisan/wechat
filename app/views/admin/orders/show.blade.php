@@ -7,21 +7,13 @@
 	<table id="blogs" class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th class="col-md-1">订单号</th>
-				<th class="col-md-1">下单时间</th>
-				<th class="col-md-1">顾客名</th>
-				<th class="col-md-1">地址名</th>
-				<th class="col-md-1">费用</th>
-				<th class="col-md-1">支付状态</th>
-				<th class="col-md-1">手机号码</th>
-				<th class="col-md-1">备注</th>
-				<th class="col-md-1">详情</th>
+				<th class="col-md-1">名称</th>
+				<th class="col-md-1">数量</th>
 			</tr>
 		</thead>
 		<tbody>
 		</tbody>
 	</table>
-	<button type="button" class="btn btn-info"><a href="../export.php" target="_blank">导出为excel</a></button>
 <!--[if !IE]> -->
 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
