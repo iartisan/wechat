@@ -25,8 +25,8 @@
 {
 	position:absolute !important;
 	top:0px !important;
-	left:30%;
-	width:70%;
+	left:40%;
+	width:60%;
 	text-align:center;
 	background:#B90000 !important;
 	padding-left:0px;
@@ -96,7 +96,7 @@
                                 <i class="heart  empty icon"  ng-show="!dish.favorite"></i>
                             </a>            
                         </div>
-						 <div class="orders_show" ><div class="in_orders">点过{{dish.count}}次</div></div>
+                        <div class="orders_show" ng-show="dish.orderscount > 0" ><div class="in_orders" style="font-size:.8em;">点过{{dish.orderscount}}次</div></div>
                         <div class="content">
                             <div class="name">
             <a href="#/dish/{{dish.id}}">
@@ -108,7 +108,7 @@
                     <div class="item">
                         <div class="msg">
 							<div class="all_msg">
-                           	  	<p>{{dish.price}}元 会员{{dish.rebate}}折</p>
+                                <p style="font-size:.9em;">{{dish.price}}元 <span ng-show="dish.rebate<100">会员{{(dish.rebate * 0.1).toFixed(1)}}折</span><span ng-show="dish.rebate==100">无特价</span></p>
                             	<p class="descriptiion">
                             	<button class="iart" ng-click="addDish(dish)">+</button>
                             	<span class="iart">{{dish.count}}</span>
