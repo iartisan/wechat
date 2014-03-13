@@ -7,14 +7,16 @@ class AdminOrdersController extends AdminController {
      * @var Post
      */
     protected $orders;
+    protected $ordersmsgs;
     /**
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Orders $orders)
+    public function __construct(Orders $orders,ordersmsgs $ordersmsgs)
     {
         parent::__construct();
         $this->orders = $orders;
+        $this->ordersmsgs = $ordersmsgs;
     }
 
     /**
@@ -39,7 +41,11 @@ class AdminOrdersController extends AdminController {
         return Datatables::of($posts)
        // ->edit_column('orders','{{ DB::table(\'orders\')->where(\'id\', \'=\', $id)->get() }}')
         ->edit_column('updated_at','{{ implode(\',\',DB::table(\'foods\')->join(\'ordersmsgs\',\'foods.id\',\'=\',\'ordersmsgs.of_food\')->where(\'of_order\', \'=\', $id)->lists(\'name\')) }}')
-        ->edit_column('updatedat','{{ implode(\',\',DB::table(\'ordersmsgs\')->join(\'orders\',\'ordersmsgs.of_order\',\'=\',$id)->sum(\'price\')) }}')
+        
+        //->edit_column('updatedat','{{DB::table(\'ordersmsgs\')->join(//\'orders\',\'ordersmsgs.of_order\',\'=\',$id)->sum(\'price\')}}')
+
+        ->edit_column('updatedat', '{{ DB::table(\'ordersmsgs\')->where(\'of_order\', \'=\', $id)->sum(\'ordersmsgs.price\') }}')
+        
         ->add_column('infomation','<a href="{{{URL::to(\'admin/orders/info/\'.$id)}}}" class="btn btn-default btn-xs iframe">详情</a>')
         ->edit_column('id','VG{{{$id}}}')
         ->make();
