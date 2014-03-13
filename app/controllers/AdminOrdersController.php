@@ -12,7 +12,7 @@ class AdminOrdersController extends AdminController {
      * Inject the models.
      * @param Post $post
      */
-    public function __construct(Orders $orders,ordersmsgs $ordersmsgs)
+    public function __construct(Orders $orders,Ordersmsgs $ordersmsgs)
     {
         parent::__construct();
         $this->orders = $orders;
