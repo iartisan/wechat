@@ -1,5 +1,4 @@
-<?php
-class SendmsgController extends BaseController {
+<?php class SendmsgController extends BaseController {
 
 
     /**
@@ -35,11 +34,11 @@ class SendmsgController extends BaseController {
     {
        if($typename=='index')
         {   
-            $foods = $this->foods->select(DB::raw("*,(select count(*) from ordersmsgs where of_food=foods.id) as count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from loves where of_food=foods.id and status=1) as love_count"))->where('show','=',1)->get();
+            $foods = $this->foods->select(DB::raw("*,(select count(*) from ordersmsgs where of_food=foods.id) as orderscount,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from loves where of_food=foods.id and status=1) as love_count"))->where('show','=',1)->get();
         }
         else
         {
-            $foods = $this->foods->select(DB::raw("*,(select count(*) from ordersmsgs where of_food=foods.id) as count,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from loves where of_food=foods.id and status=1) as love_count"))->where('show','=',1)->where('type','=',$typename)->get();
+            $foods = $this->foods->select(DB::raw("*,(select count(*) from ordersmsgs where of_food=foods.id) as orderscount,(select status from loves where of_food=foods.id and of_client='$this->value') as loves,(select count(*) from loves where of_food=foods.id and status=1) as love_count"))->where('show','=',1)->where('type','=',$typename)->get();
         }
         return Response::json($foods)->setCallback(Input::get('callback'));
     }
