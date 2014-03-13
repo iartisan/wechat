@@ -17,16 +17,18 @@
       </script>
 </head>
 <body ng-controller="bodyCtrl">
-    <div class="container view-animate" ng-view>
-        <div id="logo-container-wrapper">
-           <div class="logo-container">
-                        <div id="welcome-logo">
-                            <h1>
-                                微信点餐系统
-                                <span>------微格无线</span>
-                            </h1>
-                        </div>
-                        <div id="slow-transfer">您好，我们正在努力为你加载...</div>
+    <div class="container" ng-view>
+        <div class="view-animate" ng-view>
+            <div id="logo-container-wrapper">
+                <div class="logo-container">
+                                <div id="welcome-logo">
+                                    <h1>
+                                        微信点餐系统
+                                        <span>------微格无线</span>
+                                    </h1>
+                                </div>
+                                <div id="slow-transfer">您好，我们正在努力为你加载...</div>
+                </div>
             </div>
         </div>
     </div>
