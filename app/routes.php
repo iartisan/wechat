@@ -56,7 +56,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::controller('styles', 'AdminStylesController');
     Route::get('styles/{id}/edit', 'AdminStylesController@getEdit');
     Route::post('styles/edit/{id}', 'AdminStylesController@postEdit');
- 
+    
+    #clients Management
+    Route::controller('clients', 'AdminClientsController');
 
     # Blog Management
     Route::get('blogs/{post}/show', 'AdminBlogsController@getShow');
@@ -86,6 +88,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function()
     Route::get('orders/info/{id}','AdminOrdersController@getInfo');
     Route::get('orders/infos/{id}','AdminOrdersController@getInfos');
     Route::controller('orders', 'AdminOrdersController');
+    Route::post('orders/update','AdminOrdersController@postUpdate');
     # Admin Dashboard
     Route::controller('/', 'AdminDashboardController');
 });

@@ -9,6 +9,8 @@
 			<tr>
 				<th class="col-md-1">名称</th>
 				<th class="col-md-1">数量</th>
+				<th class="col-md-1">价钱</th>
+				<th class="col-md-1">折扣</th>
 			</tr>
 		</thead>
 		<tbody>

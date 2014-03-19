@@ -26,7 +26,6 @@
 		<thead>
 			<tr>
 				<th class="col-md-1">名称</th>
-
 				<th class="col-md-1">排序</th>
 				<th class="col-md-1">操作</th>
 			</tr>
@@ -56,6 +55,7 @@
 			         "sSearch":"搜索"
 
 				},
+				"bSort":false,
 				"bProcessing": true,
 		        "bServerSide": true,
 		        "sAjaxSource": "{{ URL::to('admin/styles/data') }}",

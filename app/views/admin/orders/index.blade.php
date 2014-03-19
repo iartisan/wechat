@@ -31,6 +31,7 @@
 				<th class="col-md-1">手机号码</th>
 				<th class="col-md-1">支付状态</th>
 				<th class="col-md-1">备注</th>
+				<th class="col-md-1">订单状态</th>
 				<th class="col-md-1">详情</th>
 			</tr>
 		</thead>
@@ -66,5 +67,22 @@
 	     		}
 			});
 		});
+		function change_step(id,step)
+		{
+			if(step==3)
+			{
+				if(!confirm("此订单已完成,继续点击将变为新订单,是否继续?"))
+				{
+					return;
+				}
+			}
+			$.ajax({
+			  type: "POST",
+  			  url: "orders/update",
+  			   data:{step:step,id:id}
+			}).done(function(text) {
+			  location.reload();
+			});
+		}
 	</script>
 @stop

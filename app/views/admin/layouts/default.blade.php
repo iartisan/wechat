@@ -242,6 +242,9 @@
 						<li{{ (Request::is('admin/orders*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/orders') }}}">
                             <i class="icon-bookmark"></i>
                             <span class="menu-text">订单管理</span></a></li>
+                         <li{{ (Request::is('admin/clients*') ? ' class="active"' : '') }}><a href="{{{ URL::to('admin/clients') }}}">
+                            <i class="icon-globe"></i>
+                            <span class="menu-text">客户管理</span></a></li>
 					</ul><!-- /.nav-list -->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">

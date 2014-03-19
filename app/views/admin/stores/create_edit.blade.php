@@ -74,7 +74,7 @@
 		<div class="form-inline" role="form">
 		  <div class="form-group">
 		    <label class="sr-only" for="exampleInputEmail2">输入地址</label>
-		    <input type="email" id="city" class="form-control" id="exampleInputEmail2" placeholder="输入地址">
+		    <input type="text" id="city" class="form-control" id="exampleInputEmail2" placeholder="输入地址">
 		  </div>
 		  <button type="button" onclick="Doit()"  class="btn btn-default">搜索</button>
 		</div>
@@ -93,6 +93,7 @@
 
 {{-- Scripts --}}
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6d31121ec9e0aac87d46eb2f7074950f"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 @section('scripts')
 	<script type="text/javascript">
 		var map = new BMap.Map("allmap");

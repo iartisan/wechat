@@ -44,7 +44,7 @@ class AdminStylesController extends AdminController {
         return Datatables::of($posts)
         //->edit_column('comments', '{{ DB::table(\'comments\')->where(\'post_id\', \'=\', $id)->count() }}')
         ->edit_column('styles', '{{ DB::table(\'styles\')->where(\'id\', \'=\', $id)->count() }}')
-        ->edit_column('status', '<input class="btn btn-default btn-xs" onclick="up({{$id}},{{$status}})" type="button" value="上移"><input onclick="down({{$id}},{{$status}})" class="btn btn-default btn-xs" type="button" value="下移">')
+        ->edit_column('status', '<input class="btn btn-default btn-xs" onclick="up({{$id}},{{$status}})" type="button" value="上移">  <input onclick="down({{$id}},{{$status}})" class="btn btn-default btn-xs" type="button" value="下移">')
         ->add_column('actions', '<a href="{{{ URL::to(\'admin/styles/edit/\' . $id  ) }}}" class="btn btn-default btn-xs iframe" >编辑</a>
                 <a href="{{{ URL::to(\'admin/styles/delete/\' . $id) }}}" class="btn btn-default btn-xs iframe">删除</a>
             ')
@@ -85,44 +85,18 @@ class AdminStylesController extends AdminController {
     }
      public function postDelete($id)
     {
-        // Declare the rules for the form validation
-        // Check if the form validates with success
        DB::table('styles')->where('id', '=', $id)->delete();
-    /*
-        // Was the blog post deleted?
-        $food = Foods::find($id);
-        
-        if(empty($food))
-        {
-            // Redirect to the blog posts management page
-            return Redirect::to('admin/blogs')->with('success', Lang::get('admin/blogs/messages.delete.success'));
-        }       
-        // There was a problem deleting the blog post
-        return Redirect::to('admin/blogs')->with('error', Lang::get('admin/blogs/messages.delete.error'));
-        */
     }
     public function postCreate()
     {
-        // Declare the rules for the form validation
-
-        // Validate the inputs
-            // Create a new blog post
         $user = Auth::user();
-        // Update the blog post data
         $this->styles->name   = Input::get('type_name');
         $this->styles->status  ='1';
-            // Was the blog post created?
         if($this->styles->save())
        {
             $update = Styles::where('id', '=', $this->styles->id)->update(array('status' => $this->styles->id));
-            // Redirect to the new blog post page
              return Redirect::to('admin/styles/edit/' . $this->styles->id )->with('success', Lang::get('更新成功'));
         }
-
-            // Redirect to the blog post create page
-        //return Redirect::to('admin/styles/create')->with('error', Lang::get('admin/blogs/messages.create.error'));
-
-        // Form validation failed
         return Redirect::to('admin/blogs/create')->withInput()->withErrors($validator);
     }
 }
